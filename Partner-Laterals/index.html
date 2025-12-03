@@ -328,42 +328,33 @@
                                     <label class="block text-xs uppercase tracking-wide text-slate-400 mb-1">Total Annual Collections (Last 3 Years Avg)</label>
                                     <div class="flex items-center">
                                         <span class="text-slate-400 mr-2">$</span>
-<!-- Annual Originations -->
-<label for="calc-originations" class="block text-sm font-medium text-slate-700">
-  Annual Originations (Billed)
+<label for="calc-revenue" class="block text-sm font-medium text-slate-700">
+  Total Annual Revenue You Generate (Billed)
 </label>
-<input id="calc-originations" type="number" min="0" step="10000"
+<input id="calc-revenue" type="number" min="0" step="10000"
        class="mt-1 w-full rounded border px-3 py-2"
-       placeholder="e.g., 1,500,000">
-
-<!-- Collection Rate -->
-<label for="calc-collections" class="mt-4 block text-sm font-medium text-slate-700">
-  Collection Rate (% of billed that is actually collected)
-</label>
-<input id="calc-collections" type="number" min="80" max="100" step="1"
-       class="mt-1 w-full rounded border px-3 py-2"
-       value="90">
-
-<!-- Partner Share After Costs -->
-<label for="calc-share" class="mt-4 block text-sm font-medium text-slate-700">
-  Partner Share of Collected Revenue (after firm overhead, associates, paralegals)
-</label>
-<input id="calc-share" type="number" min="20" max="60" step="1"
-       class="mt-1 w-full rounded border px-3 py-2"
-       value="40">
+       placeholder="e.g., 2,000,000">
 
 <p class="mt-2 text-xs text-slate-500">
-  Typical collection rates run 85–95%. Reasonable partner shares often fall in the 30–45% range
-  once associates, paralegals, and firm overhead are covered.
+  This tool assumes a typical collection realization rate of about 90% and a
+  \"rule of thirds\" split between firm overhead, profit, and partner compensation.
 </p>
 
-<!-- Result -->
-<div class="mt-6 rounded bg-slate-900 px-4 py-3 text-white">
-  <p class="text-xs uppercase tracking-wide text-slate-300">
-    Estimated Fair Annual Total Compensation
-  </p>
-  <p id="calc-comp-result" class="mt-1 text-2xl font-bold">$0</p>
+<div class="mt-6 space-y-3 rounded bg-slate-900 px-4 py-3 text-white">
+  <div>
+    <p class="text-xs uppercase tracking-wide text-slate-300">
+      Projected Collected Revenue (after collections)
+    </p>
+    <p id="calc-collected" class="mt-1 text-xl font-semibold">$0</p>
+  </div>
+  <div class="border-t border-slate-700 pt-3 mt-3">
+    <p class="text-xs uppercase tracking-wide text-slate-300">
+      Reasonable Salary Expectations
+    </p>
+    <p id="calc-salary" class="mt-1 text-2xl font-bold">$0</p>
+  </div>
 </div>
+
 
                             </div>
                         </div>
@@ -640,26 +631,34 @@
             const percent = Math.round((checked / total) * 100);
             document.getElementById('diligence-progress').innerText = percent + '%';
         }
-// Compensation Calculator Logic
-const origInput  = document.getElementById('calc-originations');
-const collInput  = document.getElementById('calc-collections');
-const shareInput = document.getElementById('calc-share');
-const compResult = document.getElementById('calc-comp-result');
+// Compensation Rule-of-Thirds Calculator
+const revInput      = document.getElementById('calc-revenue');
+const collectedOut  = document.getElementById('calc-collected');
+const salaryOut     = document.getElementById('calc-salary');
 
-function calculateComp() {
-    const originations = parseFloat(origInput.value) || 0;
-    const collections  = parseFloat(collInput.value) || 0;   // percent
-    const share        = parseFloat(shareInput.value) || 0;  // percent
-    const collectionsRate = collections / 100;
-    const shareRate       = share / 100;
-    const reasonableComp = originations * collectionsRate * shareRate;
-    compResult.innerText = '$' + reasonableComp.toLocaleString('en-US', {
+function updateCompFromRevenue() {
+    const totalRevenue = parseFloat(revInput.value) || 0;
+
+    // Assumed collection realization rate (e.g., 90%)
+    const collectionsRate = 0.90;
+
+    // Collected revenue after write-offs and collections leakage
+    const collected = totalRevenue * collectionsRate;
+
+    // Reasonable base salary: approx. one-third of collected
+    const reasonableBase = collected / 3;
+
+    collectedOut.innerText = '$' + collected.toLocaleString('en-US', {
+        maximumFractionDigits: 0
+    });
+
+    salaryOut.innerText = '$' + reasonableBase.toLocaleString('en-US', {
         maximumFractionDigits: 0
     });
 }
-origInput.addEventListener('input', calculateComp);
-collInput.addEventListener('input', calculateComp);
-shareInput.addEventListener('input', calculateComp);
+
+revInput.addEventListener('input', updateCompFromRevenue);
+
     </script>
 </body>
 </html>
