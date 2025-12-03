@@ -58,8 +58,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
-                    <i class="fa-solid fa-gavel text-goldenrod-1000 text-2xl mr-3"></i>
-                    <span class="text-xl font-bold text-slate-1000 tracking-tight">A.P.T<span class="text-maroon-1000">.</span></span>
+                    <i class="fa-solid fa-gavel text-yellow-500 text-2xl mr-3"></i>
+                    <span class="text-xl font-bold text-slate-900 tracking-tight">A.P.T<span class="text-red-900">.</span></span>
                 </div>
                 <div class="hidden sm:flex space-x-8 items-center">
                     <button onclick="switchTab('strategy')" id="tab-strategy" class="tab-active px-1 pt-1 text-sm leading-5 focus:outline-none transition duration-150 ease-in-out">Strategic Mindset</button>
@@ -325,35 +325,33 @@
                             <h3 class="text-lg font-bold mb-4">Simple Revenue Projection</h3>
                             <div class="space-y-4">
                                 <div>
-                                    <label class="block text-xs uppercase tracking-wide text-slate-400 mb-1">Total Annual Collections (Last 3 Years Avg)</label>
-                                    <div class="flex items-center">
-                                        <span class="text-slate-400 mr-2">$</span>
-<label for="calc-revenue" class="block text-sm font-medium text-slate-700">
-  Total Annual Revenue You Generate (Billed)
-</label>
-<input id="calc-revenue" type="number" min="0" step="10000"
-       class="mt-1 w-full rounded border px-3 py-2"
-       placeholder="e.g., 2,000,000">
+                                    <label class="block text-xs uppercase tracking-wide text-slate-400 mb-2">Total Annual Revenue You Generate (Billed)</label>
+                                    <div class="flex items-center bg-white rounded px-3 py-2">
+                                        <span class="text-slate-800 font-bold mr-2">$</span>
+                                        <input id="calc-revenue" type="number" min="0" step="10000"
+                                               class="flex-1 outline-none bg-transparent text-slate-800 font-semibold text-lg"
+                                               placeholder="e.g., 2,000,000">
+                                    </div>
+                                </div>
 
-<p class="mt-3 text-xs leading-relaxed text-slate-500"">
-  This assumes average collections rates of ~90% and a three-way split between overhead, executive compensation, and firm profits.
-</p>
-<div class="mt-5 space-y-4 rounded bg-slate-900 px-4 py-4 text-white"">
-  <div>
-    <p class="text-xs uppercase tracking-wide text-slate-300">
-      Projected Gross Margin Profit
-    </p>
-    <p id="calc-collected" class="mt-1 text-xl font-semibold">$0</p>
-  </div>
-  <div class="border-t border-slate-700 pt-3 mt-3">
-    <p class="text-xs uppercase tracking-wide text-slate-300">
-      A Reasonable Salary Expectation
-    </p>
-    <p id="calc-salary" class="mt-1 text-2xl font-bold">$0</p>
-  </div>
-</div>
+                                <p class="text-xs leading-relaxed text-slate-400 mt-4">
+                                    This assumes average collections rates of ~90% and a three-way split between overhead, executive compensation, and firm profits.
+                                </p>
 
-
+                                <div class="mt-6 space-y-4 rounded bg-slate-900 px-4 py-4 border border-slate-700">
+                                    <div>
+                                        <p class="text-xs uppercase tracking-wide text-slate-300">
+                                            Projected Gross Margin Profit
+                                        </p>
+                                        <p id="calc-collected" class="mt-2 text-2xl font-bold text-emerald-400">$0</p>
+                                    </div>
+                                    <div class="border-t border-slate-700 pt-4">
+                                        <p class="text-xs uppercase tracking-wide text-slate-300">
+                                            A Reasonable Salary Expectation
+                                        </p>
+                                        <p id="calc-salary" class="mt-2 text-3xl font-bold text-blue-400">$0</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -363,212 +361,210 @@
 
         <!-- TAB 4: A.P.T. FORM -->
         <div id="content-apt-form" class="hidden">
-            <div class="bg-white rounded-none md:rounded-2xl shadow-lg border border-slate-200 max-w-4xl mx-auto print-only">
-                <div class="p-8 md:p-12">
-                    <div class="flex justify-between items-center mb-8 border-b-2 border-slate-800 pb-4">
+            <div class="bg-white rounded-lg md:rounded-2xl shadow-lg border border-slate-200 max-w-4xl mx-auto">
+                <div class="p-8 md:p-12 space-y-6">
+                    <div class="flex justify-between items-start mb-6 border-b-2 border-slate-800 pb-6">
                         <div>
                             <h1 class="text-3xl font-bold text-slate-900">Attorney Partner Transition (A.P.T.)</h1>
-                            <p class="text-slate-500 uppercase tracking-widest text-sm mt-1">Confidential Candidate Information</p>
+                            <p class="text-slate-500 uppercase tracking-widest text-xs mt-2">Confidential Candidate Information</p>
                         </div>
-                        <div class="text-right hidden sm:block">
-                            <button onclick="window.print()" class="bg-slate-900 text-white px-4 py-2 rounded hover:bg-slate-800 text-sm no-print">
-                                <i class="fa-solid fa-print mr-2"></i> Print / Save as PDF
-                            </button>
-                        </div>
+                        <button onclick="window.print()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm font-medium no-print flex items-center whitespace-nowrap">
+                            <i class="fa-solid fa-print mr-2"></i> Print / PDF
+                        </button>
                     </div>
 
                     <form class="space-y-8">
                         <!-- 1. Candidate Info -->
                         <section>
-                            <h3 class="text-lg font-bold text-slate-800 uppercase border-b border-slate-200 mb-4 pb-1">1. Candidate Information</h3>
+                            <h3 class="text-lg font-bold text-slate-800 uppercase border-b-2 border-blue-600 mb-4 pb-2">1. Candidate Information</h3>
                             <div class="grid md:grid-cols-2 gap-6">
                                 <div>
-                                    <label class="block text-sm font-medium text-slate-700 mb-1">Full Name</label>
-                                    <input type="text" class="w-full border-b border-slate-300 focus:border-blue-600 outline-none py-1 bg-transparent">
+                                    <label class="block text-sm font-semibold text-slate-700 mb-2">Full Name</label>
+                                    <input type="text" name="fullName" class="w-full border-b-2 border-slate-300 focus:border-blue-600 outline-none py-2 bg-transparent text-slate-900 placeholder-slate-400">
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-medium text-slate-700 mb-1">Current Firm</label>
-                                    <input type="text" class="w-full border-b border-slate-300 focus:border-blue-600 outline-none py-1 bg-transparent">
+                                    <label class="block text-sm font-semibold text-slate-700 mb-2">Current Firm</label>
+                                    <input type="text" name="currentFirm" class="w-full border-b-2 border-slate-300 focus:border-blue-600 outline-none py-2 bg-transparent text-slate-900 placeholder-slate-400">
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-medium text-slate-700 mb-1">Position/Title</label>
-                                    <input type="text" class="w-full border-b border-slate-300 focus:border-blue-600 outline-none py-1 bg-transparent">
+                                    <label class="block text-sm font-semibold text-slate-700 mb-2">Position/Title</label>
+                                    <input type="text" name="positionTitle" class="w-full border-b-2 border-slate-300 focus:border-blue-600 outline-none py-2 bg-transparent text-slate-900 placeholder-slate-400">
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-medium text-slate-700 mb-1">Practice Area(s)</label>
-                                    <input type="text" class="w-full border-b border-slate-300 focus:border-blue-600 outline-none py-1 bg-transparent">
+                                    <label class="block text-sm font-semibold text-slate-700 mb-2">Practice Area(s)</label>
+                                    <input type="text" name="practiceAreas" class="w-full border-b-2 border-slate-300 focus:border-blue-600 outline-none py-2 bg-transparent text-slate-900 placeholder-slate-400">
                                 </div>
                                 <div class="md:col-span-2">
-                                    <label class="block text-sm font-medium text-slate-700 mb-1">Preferred Contact (Email & Phone)</label>
-                                    <input type="text" class="w-full border-b border-slate-300 focus:border-blue-600 outline-none py-1 bg-transparent">
+                                    <label class="block text-sm font-semibold text-slate-700 mb-2">Preferred Contact (Email & Phone)</label>
+                                    <input type="text" name="preferredContact" class="w-full border-b-2 border-slate-300 focus:border-blue-600 outline-none py-2 bg-transparent text-slate-900 placeholder-slate-400">
                                 </div>
                             </div>
                         </section>
 
                         <!-- 2. Transition Motivation -->
                         <section>
-                            <h3 class="text-lg font-bold text-slate-800 uppercase border-b border-slate-200 mb-4 pb-1">2. Transition Motivation & Timeline</h3>
+                            <h3 class="text-lg font-bold text-slate-800 uppercase border-b-2 border-blue-600 mb-4 pb-2">2. Transition Motivation & Timeline</h3>
                             <div class="space-y-4">
                                 <div>
-                                    <label class="block text-sm font-medium text-slate-700 mb-1">Top Three Reasons for Transition</label>
-                                    <textarea class="w-full border border-slate-300 rounded p-2 focus:border-blue-600 outline-none" rows="3"></textarea>
+                                    <label class="block text-sm font-semibold text-slate-700 mb-2">Top Three Reasons for Transition</label>
+                                    <textarea name="transitionReasons" class="w-full border border-slate-300 rounded p-3 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none bg-white text-slate-900" rows="3" placeholder="Describe your motivation..."></textarea>
                                 </div>
                                 <div class="grid grid-cols-2 gap-4">
                                     <div>
-                                        <span class="block text-sm font-medium text-slate-700 mb-1">Equity Interest in Current Firm?</span>
+                                        <span class="block text-sm font-semibold text-slate-700 mb-2">Equity Interest in Current Firm?</span>
                                         <div class="flex space-x-4">
-                                            <label class="inline-flex items-center"><input type="radio" name="equity" class="form-radio text-blue-600"> <span class="ml-2">Yes</span></label>
-                                            <label class="inline-flex items-center"><input type="radio" name="equity" class="form-radio text-blue-600"> <span class="ml-2">No</span></label>
+                                            <label class="inline-flex items-center cursor-pointer"><input type="radio" name="equityInterest" value="yes" class="w-4 h-4"> <span class="ml-2 text-sm">Yes</span></label>
+                                            <label class="inline-flex items-center cursor-pointer"><input type="radio" name="equityInterest" value="no" class="w-4 h-4"> <span class="ml-2 text-sm">No</span></label>
                                         </div>
                                     </div>
                                     <div>
-                                        <span class="block text-sm font-medium text-slate-700 mb-1">Capital Contribution Made?</span>
+                                        <span class="block text-sm font-semibold text-slate-700 mb-2">Capital Contribution Made?</span>
                                         <div class="flex space-x-4">
-                                            <label class="inline-flex items-center"><input type="radio" name="capital" class="form-radio text-blue-600"> <span class="ml-2">Yes</span></label>
-                                            <label class="inline-flex items-center"><input type="radio" name="capital" class="form-radio text-blue-600"> <span class="ml-2">No</span></label>
+                                            <label class="inline-flex items-center cursor-pointer"><input type="radio" name="capitalContribution" value="yes" class="w-4 h-4"> <span class="ml-2 text-sm">Yes</span></label>
+                                            <label class="inline-flex items-center cursor-pointer"><input type="radio" name="capitalContribution" value="no" class="w-4 h-4"> <span class="ml-2 text-sm">No</span></label>
                                         </div>
                                     </div>
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-medium text-slate-700 mb-1">Notice Period Required</label>
-                                    <input type="text" class="w-full border-b border-slate-300 focus:border-blue-600 outline-none py-1 bg-transparent">
+                                    <label class="block text-sm font-semibold text-slate-700 mb-2">Notice Period Required</label>
+                                    <input type="text" name="noticePeriod" class="w-full border-b-2 border-slate-300 focus:border-blue-600 outline-none py-2 bg-transparent text-slate-900 placeholder-slate-400">
                                 </div>
                             </div>
                         </section>
 
                         <!-- 3. Financials -->
                         <section>
-                            <h3 class="text-lg font-bold text-slate-800 uppercase border-b border-slate-200 mb-4 pb-1">3. Financial Metrics (Historical)</h3>
-                            <div class="overflow-x-auto">
-                                <table class="min-w-full text-sm text-left">
+                            <h3 class="text-lg font-bold text-slate-800 uppercase border-b-2 border-blue-600 mb-4 pb-2">3. Financial Metrics (Historical)</h3>
+                            <div class="overflow-x-auto mb-4">
+                                <table class="min-w-full text-sm text-left border-collapse">
                                     <thead>
-                                        <tr class="bg-slate-50 border-b">
-                                            <th class="py-2 px-2">Year</th>
-                                            <th class="py-2 px-2">Personal Billings</th>
-                                            <th class="py-2 px-2">Total Billings</th>
-                                            <th class="py-2 px-2">Personal Collections</th>
-                                            <th class="py-2 px-2">Total Collections</th>
+                                        <tr class="bg-slate-100 border-b-2 border-slate-300">
+                                            <th class="py-3 px-3 font-semibold text-slate-700">Year</th>
+                                            <th class="py-3 px-3 font-semibold text-slate-700">Personal Billings</th>
+                                            <th class="py-3 px-3 font-semibold text-slate-700">Total Billings</th>
+                                            <th class="py-3 px-3 font-semibold text-slate-700">Personal Collections</th>
+                                            <th class="py-3 px-3 font-semibold text-slate-700">Total Collections</th>
                                         </tr>
                                     </thead>
-                                    <tbody class="divide-y divide-slate-100">
+                                    <tbody class="divide-y divide-slate-200">
                                         <tr>
-                                            <td class="py-2 font-medium">YTD (2025)</td>
-                                            <td><input type="text" class="w-full bg-slate-50 border-none p-1" placeholder="$"></td>
-                                            <td><input type="text" class="w-full bg-slate-50 border-none p-1" placeholder="$"></td>
-                                            <td><input type="text" class="w-full bg-slate-50 border-none p-1" placeholder="$"></td>
-                                            <td><input type="text" class="w-full bg-slate-50 border-none p-1" placeholder="$"></td>
+                                            <td class="py-3 px-3 font-semibold text-slate-700 bg-slate-50">YTD (2025)</td>
+                                            <td class="py-3 px-3"><input type="text" name="ytd_personal_billings" class="w-full border-b border-slate-300 focus:border-blue-600 outline-none py-1 bg-transparent" placeholder="$"></td>
+                                            <td class="py-3 px-3"><input type="text" name="ytd_total_billings" class="w-full border-b border-slate-300 focus:border-blue-600 outline-none py-1 bg-transparent" placeholder="$"></td>
+                                            <td class="py-3 px-3"><input type="text" name="ytd_personal_collections" class="w-full border-b border-slate-300 focus:border-blue-600 outline-none py-1 bg-transparent" placeholder="$"></td>
+                                            <td class="py-3 px-3"><input type="text" name="ytd_total_collections" class="w-full border-b border-slate-300 focus:border-blue-600 outline-none py-1 bg-transparent" placeholder="$"></td>
                                         </tr>
                                         <tr>
-                                            <td class="py-2 font-medium">2024</td>
-                                            <td><input type="text" class="w-full bg-slate-50 border-none p-1" placeholder="$"></td>
-                                            <td><input type="text" class="w-full bg-slate-50 border-none p-1" placeholder="$"></td>
-                                            <td><input type="text" class="w-full bg-slate-50 border-none p-1" placeholder="$"></td>
-                                            <td><input type="text" class="w-full bg-slate-50 border-none p-1" placeholder="$"></td>
+                                            <td class="py-3 px-3 font-semibold text-slate-700 bg-slate-50">2024</td>
+                                            <td class="py-3 px-3"><input type="text" name="2024_personal_billings" class="w-full border-b border-slate-300 focus:border-blue-600 outline-none py-1 bg-transparent" placeholder="$"></td>
+                                            <td class="py-3 px-3"><input type="text" name="2024_total_billings" class="w-full border-b border-slate-300 focus:border-blue-600 outline-none py-1 bg-transparent" placeholder="$"></td>
+                                            <td class="py-3 px-3"><input type="text" name="2024_personal_collections" class="w-full border-b border-slate-300 focus:border-blue-600 outline-none py-1 bg-transparent" placeholder="$"></td>
+                                            <td class="py-3 px-3"><input type="text" name="2024_total_collections" class="w-full border-b border-slate-300 focus:border-blue-600 outline-none py-1 bg-transparent" placeholder="$"></td>
                                         </tr>
                                         <tr>
-                                            <td class="py-2 font-medium">2023</td>
-                                            <td><input type="text" class="w-full bg-slate-50 border-none p-1" placeholder="$"></td>
-                                            <td><input type="text" class="w-full bg-slate-50 border-none p-1" placeholder="$"></td>
-                                            <td><input type="text" class="w-full bg-slate-50 border-none p-1" placeholder="$"></td>
-                                            <td><input type="text" class="w-full bg-slate-50 border-none p-1" placeholder="$"></td>
+                                            <td class="py-3 px-3 font-semibold text-slate-700 bg-slate-50">2023</td>
+                                            <td class="py-3 px-3"><input type="text" name="2023_personal_billings" class="w-full border-b border-slate-300 focus:border-blue-600 outline-none py-1 bg-transparent" placeholder="$"></td>
+                                            <td class="py-3 px-3"><input type="text" name="2023_total_billings" class="w-full border-b border-slate-300 focus:border-blue-600 outline-none py-1 bg-transparent" placeholder="$"></td>
+                                            <td class="py-3 px-3"><input type="text" name="2023_personal_collections" class="w-full border-b border-slate-300 focus:border-blue-600 outline-none py-1 bg-transparent" placeholder="$"></td>
+                                            <td class="py-3 px-3"><input type="text" name="2023_total_collections" class="w-full border-b border-slate-300 focus:border-blue-600 outline-none py-1 bg-transparent" placeholder="$"></td>
                                         </tr>
                                         <tr>
-                                            <td class="py-2 font-medium">2022</td>
-                                            <td><input type="text" class="w-full bg-slate-50 border-none p-1" placeholder="$"></td>
-                                            <td><input type="text" class="w-full bg-slate-50 border-none p-1" placeholder="$"></td>
-                                            <td><input type="text" class="w-full bg-slate-50 border-none p-1" placeholder="$"></td>
-                                            <td><input type="text" class="w-full bg-slate-50 border-none p-1" placeholder="$"></td>
+                                            <td class="py-3 px-3 font-semibold text-slate-700 bg-slate-50">2022</td>
+                                            <td class="py-3 px-3"><input type="text" name="2022_personal_billings" class="w-full border-b border-slate-300 focus:border-blue-600 outline-none py-1 bg-transparent" placeholder="$"></td>
+                                            <td class="py-3 px-3"><input type="text" name="2022_total_billings" class="w-full border-b border-slate-300 focus:border-blue-600 outline-none py-1 bg-transparent" placeholder="$"></td>
+                                            <td class="py-3 px-3"><input type="text" name="2022_personal_collections" class="w-full border-b border-slate-300 focus:border-blue-600 outline-none py-1 bg-transparent" placeholder="$"></td>
+                                            <td class="py-3 px-3"><input type="text" name="2022_total_collections" class="w-full border-b border-slate-300 focus:border-blue-600 outline-none py-1 bg-transparent" placeholder="$"></td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                             
-                            <div class="mt-4 grid md:grid-cols-2 gap-6">
+                            <div class="grid md:grid-cols-2 gap-6">
                                 <div>
-                                    <label class="block text-sm font-medium text-slate-700 mb-1">Average Billing Rate ($/hr)</label>
-                                    <input type="text" class="w-full border-b border-slate-300 focus:border-blue-600 outline-none py-1 bg-transparent">
+                                    <label class="block text-sm font-semibold text-slate-700 mb-2">Average Billing Rate ($/hr)</label>
+                                    <input type="text" name="billingRate" class="w-full border-b-2 border-slate-300 focus:border-blue-600 outline-none py-2 bg-transparent text-slate-900 placeholder-slate-400">
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-medium text-slate-700 mb-1">Typical Collection %</label>
-                                    <input type="text" class="w-full border-b border-slate-300 focus:border-blue-600 outline-none py-1 bg-transparent">
+                                    <label class="block text-sm font-semibold text-slate-700 mb-2">Typical Collection %</label>
+                                    <input type="text" name="collectionPercent" class="w-full border-b-2 border-slate-300 focus:border-blue-600 outline-none py-2 bg-transparent text-slate-900 placeholder-slate-400">
                                 </div>
                             </div>
                         </section>
 
                         <!-- 4. Client Profile -->
                         <section>
-                            <h3 class="text-lg font-bold text-slate-800 uppercase border-b border-slate-200 mb-4 pb-1">4. Client Profile & Conflicts</h3>
+                            <h3 class="text-lg font-bold text-slate-800 uppercase border-b-2 border-blue-600 mb-4 pb-2">4. Client Profile & Conflicts</h3>
                             <div class="space-y-4">
                                 <div>
-                                    <label class="block text-sm font-medium text-slate-700 mb-1">Industry Sectors Served</label>
-                                    <input type="text" class="w-full border-b border-slate-300 focus:border-blue-600 outline-none py-1 bg-transparent">
+                                    <label class="block text-sm font-semibold text-slate-700 mb-2">Industry Sectors Served</label>
+                                    <input type="text" name="industrySectors" class="w-full border-b-2 border-slate-300 focus:border-blue-600 outline-none py-2 bg-transparent text-slate-900 placeholder-slate-400">
                                 </div>
                                 <div>
-                                    <span class="block text-sm font-medium text-slate-700 mb-2">Primary Matter Types</span>
-                                    <div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-sm">
-                                        <label><input type="checkbox" class="mr-2"> Litigation</label>
-                                        <label><input type="checkbox" class="mr-2"> Transactional</label>
-                                        <label><input type="checkbox" class="mr-2"> Regulatory</label>
-                                        <label><input type="checkbox" class="mr-2"> IP</label>
-                                        <label><input type="checkbox" class="mr-2"> Employment</label>
-                                        <label><input type="checkbox" class="mr-2"> Real Estate</label>
-                                        <label><input type="checkbox" class="mr-2"> Corporate</label>
-                                        <label><input type="checkbox" class="mr-2"> Other</label>
+                                    <span class="block text-sm font-semibold text-slate-700 mb-3">Primary Matter Types</span>
+                                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
+                                        <label class="flex items-center cursor-pointer"><input type="checkbox" name="matterTypes" value="Litigation" class="w-4 h-4 mr-2"> <span>Litigation</span></label>
+                                        <label class="flex items-center cursor-pointer"><input type="checkbox" name="matterTypes" value="Transactional" class="w-4 h-4 mr-2"> <span>Transactional</span></label>
+                                        <label class="flex items-center cursor-pointer"><input type="checkbox" name="matterTypes" value="Regulatory" class="w-4 h-4 mr-2"> <span>Regulatory</span></label>
+                                        <label class="flex items-center cursor-pointer"><input type="checkbox" name="matterTypes" value="IP" class="w-4 h-4 mr-2"> <span>IP</span></label>
+                                        <label class="flex items-center cursor-pointer"><input type="checkbox" name="matterTypes" value="Employment" class="w-4 h-4 mr-2"> <span>Employment</span></label>
+                                        <label class="flex items-center cursor-pointer"><input type="checkbox" name="matterTypes" value="Real Estate" class="w-4 h-4 mr-2"> <span>Real Estate</span></label>
+                                        <label class="flex items-center cursor-pointer"><input type="checkbox" name="matterTypes" value="Corporate" class="w-4 h-4 mr-2"> <span>Corporate</span></label>
+                                        <label class="flex items-center cursor-pointer"><input type="checkbox" name="matterTypes" value="Other" class="w-4 h-4 mr-2"> <span>Other</span></label>
                                     </div>
                                 </div>
-                                <div class="bg-blue-50 p-4 rounded border border-blue-100">
-                                    <label class="block text-sm font-bold text-blue-900 mb-1">Potential Conflicts?</label>
-                                    <p class="text-xs text-blue-700 mb-2">Are there any major adversaries or conflicts that would prevent you from moving to certain firms?</p>
-                                    <textarea class="w-full border border-blue-200 rounded p-2 focus:border-blue-600 outline-none bg-white" rows="2"></textarea>
+                                <div class="bg-blue-50 p-4 rounded-lg border-2 border-blue-200">
+                                    <label class="block text-sm font-bold text-blue-900 mb-2">Potential Conflicts?</label>
+                                    <p class="text-xs text-blue-700 mb-3">Are there any major adversaries or conflicts that would prevent you from moving to certain firms?</p>
+                                    <textarea name="potentialConflicts" class="w-full border-2 border-blue-300 rounded p-2 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none bg-white text-slate-900" rows="2" placeholder="List any conflicts..."></textarea>
                                 </div>
                             </div>
                         </section>
 
                         <!-- 5. Team -->
                         <section>
-                            <h3 class="text-lg font-bold text-slate-800 uppercase border-b border-slate-200 mb-4 pb-1">5. Team & Compensation</h3>
-                            <div class="grid md:grid-cols-2 gap-6">
+                            <h3 class="text-lg font-bold text-slate-800 uppercase border-b-2 border-blue-600 mb-4 pb-2">5. Team & Compensation</h3>
+                            <div class="grid md:grid-cols-2 gap-6 mb-4">
                                 <div>
-                                    <label class="block text-sm font-medium text-slate-700 mb-1">Current Base Salary</label>
-                                    <input type="text" class="w-full border-b border-slate-300 focus:border-blue-600 outline-none py-1 bg-transparent">
+                                    <label class="block text-sm font-semibold text-slate-700 mb-2">Current Base Salary</label>
+                                    <input type="text" name="currentSalary" class="w-full border-b-2 border-slate-300 focus:border-blue-600 outline-none py-2 bg-transparent text-slate-900 placeholder-slate-400">
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-medium text-slate-700 mb-1">Total Comp (Last Year)</label>
-                                    <input type="text" class="w-full border-b border-slate-300 focus:border-blue-600 outline-none py-1 bg-transparent">
+                                    <label class="block text-sm font-semibold text-slate-700 mb-2">Total Comp (Last Year)</label>
+                                    <input type="text" name="totalComp" class="w-full border-b-2 border-slate-300 focus:border-blue-600 outline-none py-2 bg-transparent text-slate-900 placeholder-slate-400">
                                 </div>
-                                <div class="md:col-span-2">
-                                    <span class="block text-sm font-medium text-slate-700 mb-2">Staff to Transition?</span>
-                                    <div class="grid grid-cols-3 gap-4 text-sm bg-slate-50 p-3 rounded">
-                                        <div>
-                                            <label>Associates (Qty)</label>
-                                            <input type="number" class="w-full border rounded p-1">
-                                        </div>
-                                        <div>
-                                            <label>Paralegals (Qty)</label>
-                                            <input type="number" class="w-full border rounded p-1">
-                                        </div>
-                                        <div>
-                                            <label>Admin (Qty)</label>
-                                            <input type="number" class="w-full border rounded p-1">
-                                        </div>
+                            </div>
+                            <div>
+                                <span class="block text-sm font-semibold text-slate-700 mb-3">Staff to Transition?</span>
+                                <div class="grid grid-cols-3 gap-4 bg-slate-50 p-4 rounded-lg border border-slate-200">
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-700 mb-2">Associates (Qty)</label>
+                                        <input type="number" name="associates" class="w-full border-2 border-slate-300 rounded px-2 py-1 focus:border-blue-600 outline-none">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-700 mb-2">Paralegals (Qty)</label>
+                                        <input type="number" name="paralegals" class="w-full border-2 border-slate-300 rounded px-2 py-1 focus:border-blue-600 outline-none">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-700 mb-2">Admin (Qty)</label>
+                                        <input type="number" name="admin" class="w-full border-2 border-slate-300 rounded px-2 py-1 focus:border-blue-600 outline-none">
                                     </div>
                                 </div>
                             </div>
                         </section>
 
                         <!-- Certification -->
-                        <section class="border-t-2 border-slate-200 pt-6 mt-8">
+                        <section class="border-t-2 border-slate-300 pt-6 mt-8">
                             <p class="text-xs text-slate-500 mb-6 italic">
                                 I certify that the information provided is accurate and complete to the best of my knowledge. I understand that this form is for preliminary assessment purposes.
                             </p>
                             <div class="grid md:grid-cols-2 gap-12">
                                 <div>
                                     <label class="block text-xs font-bold text-slate-400 uppercase mb-4">Signature</label>
-                                    <div class="border-b border-slate-900 h-8"></div>
+                                    <div class="border-b-2 border-slate-900 h-10"></div>
                                 </div>
                                 <div>
                                     <label class="block text-xs font-bold text-slate-400 uppercase mb-4">Date</label>
-                                    <div class="border-b border-slate-900 h-8"></div>
+                                    <div class="border-b-2 border-slate-900 h-10"></div>
                                 </div>
                             </div>
                         </section>
@@ -593,12 +589,36 @@
                 <div class="md:text-right">
                     <p class="text-xs text-slate-500">
                         <strong>Disclaimer:</strong> This tool is for informational purposes only and does not constitute legal advice. 
-                        Always consult with and employment law professional or regarding your current situation. All Rights Reserved ® Percy Towers, LLC - Dba People Placers (2026)
+                        Always consult with an employment law professional regarding your current situation. All Rights Reserved ® Percy Towers, LLC - Dba People Placers (2026)
                     </p>
                 </div>
             </div>
         </div>
     </footer>
+
+    <!-- Validation Toast -->
+    <div id="validation-toast" class="fixed bottom-4 right-4 hidden bg-red-600 text-white px-6 py-3 rounded-lg shadow-lg z-50">
+        <div class="flex items-center">
+            <i class="fa-solid fa-exclamation-circle mr-3"></i>
+            <span id="toast-message">Please fill in all required fields</span>
+        </div>
+    </div>
+
+    <!-- Loading Toast -->
+    <div id="loading-toast" class="fixed bottom-4 right-4 hidden bg-blue-600 text-white px-6 py-3 rounded-lg shadow-lg z-50">
+        <div class="flex items-center">
+            <i class="fa-solid fa-spinner animate-spin mr-3"></i>
+            <span>Submitting form...</span>
+        </div>
+    </div>
+
+    <!-- Success Toast -->
+    <div id="success-toast" class="fixed bottom-4 right-4 hidden bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg z-50">
+        <div class="flex items-center">
+            <i class="fa-solid fa-check-circle mr-3"></i>
+            <span>Form submitted successfully! Opening print dialog...</span>
+        </div>
+    </div>
 
     <!-- Scripts -->
     <script>
@@ -629,34 +649,188 @@
             const percent = Math.round((checked / total) * 100);
             document.getElementById('diligence-progress').innerText = percent + '%';
         }
-// Compensation Rule-of-Thirds Calculator
-const revInput      = document.getElementById('calc-revenue');
-const collectedOut  = document.getElementById('calc-collected');
-const salaryOut     = document.getElementById('calc-salary');
 
-function updateCompFromRevenue() {
-    const totalRevenue = parseFloat(revInput.value) || 0;
+        // Compensation Rule-of-Thirds Calculator
+        const revInput      = document.getElementById('calc-revenue');
+        const collectedOut  = document.getElementById('calc-collected');
+        const salaryOut     = document.getElementById('calc-salary');
 
-    // Assumed collection realization rate (e.g., 90%)
-    const collectionsRate = 0.90;
+        function updateCompFromRevenue() {
+            const totalRevenue = parseFloat(revInput.value) || 0;
+            const collectionsRate = 0.90;
+            const collected = totalRevenue * collectionsRate;
+            const reasonableBase = collected / 3;
 
-    // Collected revenue after write-offs and collections leakage
-    const collected = totalRevenue * collectionsRate;
+            collectedOut.innerText = '$' + collected.toLocaleString('en-US', {
+                maximumFractionDigits: 0
+            });
 
-    // Reasonable base salary: approx. one-third of collected
-    const reasonableBase = collected / 3;
+            salaryOut.innerText = '$' + reasonableBase.toLocaleString('en-US', {
+                maximumFractionDigits: 0
+            });
+        }
 
-    collectedOut.innerText = '$' + collected.toLocaleString('en-US', {
-        maximumFractionDigits: 0
-    });
+        revInput.addEventListener('input', updateCompFromRevenue);
 
-    salaryOut.innerText = '$' + reasonableBase.toLocaleString('en-US', {
-        maximumFractionDigits: 0
-    });
-}
+        // Form Validation & Submission
+        function showToast(toastId, message = null) {
+            const toast = document.getElementById(toastId);
+            if (message) {
+                toast.querySelector('span').innerText = message;
+            }
+            toast.classList.remove('hidden');
+            setTimeout(() => toast.classList.add('hidden'), 4000);
+        }
 
-revInput.addEventListener('input', updateCompFromRevenue);
+        function validateForm() {
+            const form = document.querySelector('#content-apt-form form');
+            const inputs = form.querySelectorAll('input[type="text"], input[type="number"], textarea');
+            let emptyFields = [];
 
+            inputs.forEach(input => {
+                if (!input.value.trim()) {
+                    emptyFields.push(input);
+                }
+            });
+
+            // Check for at least one radio button selected in each group
+            const radioGroups = ['equity', 'capital'];
+            radioGroups.forEach(group => {
+                const selected = form.querySelector(`input[name="${group}"]:checked`);
+                if (!selected) {
+                    emptyFields.push(group);
+                }
+            });
+
+            return emptyFields.length === 0;
+        }
+
+        function collectFormData() {
+            const form = document.querySelector('#content-apt-form form');
+            const data = {};
+
+            // Get all named inputs (text, number, textarea)
+            form.querySelectorAll('input[name], textarea[name]').forEach(input => {
+                data[input.name] = input.value;
+            });
+
+            // Get radio button values
+            form.querySelectorAll('input[type="radio"]:checked').forEach(radio => {
+                data[radio.name] = radio.value;
+            });
+
+            // Get checkbox values (grouped by name)
+            form.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                if (!data[checkbox.name]) {
+                    data[checkbox.name] = [];
+                }
+                if (checkbox.checked) {
+                    data[checkbox.name].push(checkbox.value);
+                }
+            });
+
+            // Add timestamp
+            data.timestamp = new Date().toISOString();
+            data.userAgent = navigator.userAgent;
+
+            return data;
+        }
+
+        async function submitFormToWebhook(formData) {
+            const webhookUrl = 'https://percy-towers.app.loxo.co/api/percy-towers/people';
+            const bearerToken = '57936f49ebea7eaea8e79e9c241e55a3f4997bc087c5471e2b44c722f4bbbbef8da673a3d47bc2dc7b1f5bffbea4715e9ecd46cf01e1084b28184053dac85edcf07922361c95ae050dbb250b80ed81d12c179e18012504405e283abd6c363d16bb9e6865d8876c5895d6c2f6ff362a54dd97278e8d0d3a1216fb3947fa7c3450';
+            
+            // Extract email from preferredContact
+            const emailMatch = formData.preferredContact?.match(/[\w\.-]+@[\w\.-]+\.\w+/);
+            const email = emailMatch ? emailMatch[0] : formData.preferredContact || '';
+
+            const loxoPayload = {
+                person: {
+                    name: formData.fullName || '',
+                    description: `Practice Areas: ${formData.practiceAreas || ''}\nReasons: ${formData.transitionReasons || ''}`,
+                    emails: email ? [{ value: email, email_type_id: 113506 }] : [],
+                    phones: [],
+                    job_profiles: [
+                        {
+                            title: formData.positionTitle || '',
+                            company: { name: formData.currentFirm || '' },
+                            description: `Notice Period: ${formData.noticePeriod || 'N/A'}`
+                        }
+                    ],
+                    custom_text_1: formData.industrySectors || null,
+                    custom_text_2: formData.matterTypes?.join(', ') || null,
+                    custom_text_3: formData.potentialConflicts || null,
+                    custom_text_5: formData.currentSalary || null,
+                    custom_text_6: formData.totalComp || null,
+                    salary: formData.currentSalary ? parseInt(formData.currentSalary.replace(/\D/g, '')) || null : null,
+                    target_salary: formData.totalComp ? parseInt(formData.totalComp.replace(/\D/g, '')) || null : null,
+                    location: 'Not Specified',
+                    country: 'US'
+                },
+                errors: []
+            };
+
+            try {
+                const response = await fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${bearerToken}`
+                    },
+                    body: JSON.stringify(loxoPayload)
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json().catch(() => ({}));
+                    throw new Error(`LOXO API error: ${response.status}`);
+                }
+
+                return await response.json();
+            } catch (error) {
+                console.error('LOXO webhook submission failed:', error);
+                throw error;
+            }
+        }
+
+        async function handlePrintAndSubmit() {
+            // Validate form
+            if (!validateForm()) {
+                showToast('validation-toast', '⚠️ Please fill in all required fields before printing.');
+                return;
+            }
+
+            // Show loading toast
+            showToast('loading-toast');
+
+            try {
+                // Collect form data
+                const formData = collectFormData();
+
+                // Submit to LOXO webhook
+                await submitFormToWebhook(formData);
+
+                // Show success toast
+                showToast('success-toast');
+
+                // Trigger print dialog after short delay
+                setTimeout(() => {
+                    window.print();
+                }, 500);
+            } catch (error) {
+                showToast('validation-toast', '❌ Error submitting form. Please try again.');
+                console.error('Form submission error:', error);
+            }
+        }
+
+        // Replace print button with validation handler
+        document.addEventListener('DOMContentLoaded', () => {
+            const printButton = document.querySelector('#content-apt-form button[onclick="window.print()"]');
+            if (printButton) {
+                printButton.onclick = handlePrintAndSubmit;
+                printButton.removeAttribute('onclick');
+            }
+        });
     </script>
 </body>
 </html>
