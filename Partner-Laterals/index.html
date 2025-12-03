@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Attorney Partner Transition Hub</title>
+    <meta name="description" content="Confidential lateral partner moves for bespoke attorneys supporting heavy litigation, high-stakes dispute resolution and complex transactions. Uncover the value of your practice's potential, the talent which you exude, evaluate your current clientele, measure it to the resources at your disposal, and access curated guidance for top-tier legal talent navigating discreet moves.">
+    <meta name="keywords" content="lateral partner recruiting, partner laterals, AmLaw, Am Law, Chambers Ranked, biglaw, Big Law, reputable firm, private practice, private investment funds, data privacy law, cryptolaw, crypto litigation, blockchain regulation, emerging tech, emerging talent, de novo, bespoke lawyer, the firm, BigLaw Partner, hidden opportunities, confidential legal search, discreet recruiter, maximum impact, partner roles, portable book of business, revenue generating, billable hours, maximum bill rate, elite legal talent, rainmaker, dragon, managing partner, career transitions">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
@@ -326,21 +328,43 @@
                                     <label class="block text-xs uppercase tracking-wide text-slate-400 mb-1">Total Annual Collections (Last 3 Years Avg)</label>
                                     <div class="flex items-center">
                                         <span class="text-slate-400 mr-2">$</span>
-                                        <input type="number" id="calc-revenue" class="w-full bg-slate-700 border border-slate-600 rounded p-2 text-white" placeholder="e.g. 1500000">
-                                    </div>
-                                </div>
-                                <div>
-                                    <label class="block text-xs uppercase tracking-wide text-slate-400 mb-1">Estimated Portability %</label>
-                                    <input type="range" id="calc-percent" min="0" max="100" value="70" class="w-full h-2 bg-slate-600 rounded-lg appearance-none cursor-pointer">
-                                    <div class="text-right text-sm text-blue-300" id="percent-display">70%</div>
-                                </div>
-                                <div class="border-t border-slate-600 pt-4 mt-2">
-                                    <p class="text-sm text-slate-400">Projected Portable Revenue:</p>
-                                    <p class="text-3xl font-bold text-emerald-400" id="calc-result">$0</p>
-                                </div>
-                                <p class="text-xs text-slate-500 mt-2 italic">
-                                    *This is the number the Hiring Partner cares about most. Be conservative.
-                                </p>
+<!-- Annual Originations -->
+<label for="calc-originations" class="block text-sm font-medium text-slate-700">
+  Annual Originations (Billed)
+</label>
+<input id="calc-originations" type="number" min="0" step="10000"
+       class="mt-1 w-full rounded border px-3 py-2"
+       placeholder="e.g., 1,500,000">
+
+<!-- Collection Rate -->
+<label for="calc-collections" class="mt-4 block text-sm font-medium text-slate-700">
+  Collection Rate (% of billed that is actually collected)
+</label>
+<input id="calc-collections" type="number" min="80" max="100" step="1"
+       class="mt-1 w-full rounded border px-3 py-2"
+       value="90">
+
+<!-- Partner Share After Costs -->
+<label for="calc-share" class="mt-4 block text-sm font-medium text-slate-700">
+  Partner Share of Collected Revenue (after firm overhead, associates, paralegals)
+</label>
+<input id="calc-share" type="number" min="20" max="60" step="1"
+       class="mt-1 w-full rounded border px-3 py-2"
+       value="40">
+
+<p class="mt-2 text-xs text-slate-500">
+  Typical collection rates run 85–95%. Reasonable partner shares often fall in the 30–45% range
+  once associates, paralegals, and firm overhead are covered.
+</p>
+
+<!-- Result -->
+<div class="mt-6 rounded bg-slate-900 px-4 py-3 text-white">
+  <p class="text-xs uppercase tracking-wide text-slate-300">
+    Estimated Fair Annual Total Compensation
+  </p>
+  <p id="calc-comp-result" class="mt-1 text-2xl font-bold">$0</p>
+</div>
+
                             </div>
                         </div>
                     </div>
@@ -616,28 +640,26 @@
             const percent = Math.round((checked / total) * 100);
             document.getElementById('diligence-progress').innerText = percent + '%';
         }
+// Compensation Calculator Logic
+const origInput  = document.getElementById('calc-originations');
+const collInput  = document.getElementById('calc-collections');
+const shareInput = document.getElementById('calc-share');
+const compResult = document.getElementById('calc-comp-result');
 
-        // Revenue Calculator Logic
-        const revInput = document.getElementById('calc-revenue');
-        const percentInput = document.getElementById('calc-percent');
-        const percentDisplay = document.getElementById('percent-display');
-        const resultDisplay = document.getElementById('calc-result');
-
-        function calculateRevenue() {
-            const revenue = parseFloat(revInput.value) || 0;
-            const percent = parseInt(percentInput.value) || 0;
-            
-            percentDisplay.innerText = percent + '%';
-            
-            const projection = revenue * (percent / 100);
-            resultDisplay.innerText = '$' + projection.toLocaleString('en-US', {
-                maximumFractionDigits: 0
-            });
-        }
-
-        revInput.addEventListener('input', calculateRevenue);
-        percentInput.addEventListener('input', calculateRevenue);
-
+function calculateComp() {
+    const originations = parseFloat(origInput.value) || 0;
+    const collections  = parseFloat(collInput.value) || 0;   // percent
+    const share        = parseFloat(shareInput.value) || 0;  // percent
+    const collectionsRate = collections / 100;
+    const shareRate       = share / 100;
+    const reasonableComp = originations * collectionsRate * shareRate;
+    compResult.innerText = '$' + reasonableComp.toLocaleString('en-US', {
+        maximumFractionDigits: 0
+    });
+}
+origInput.addEventListener('input', calculateComp);
+collInput.addEventListener('input', calculateComp);
+shareInput.addEventListener('input', calculateComp);
     </script>
 </body>
 </html>
