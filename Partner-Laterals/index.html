@@ -3,511 +3,641 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Strategic Resolution Partner | Executive Briefing</title>
+    <title>Lateral Partner Transition Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,700;1,400&display=swap');
-
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+        
         body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #F3F4F6; /* Gray-100 */
-            color: #111827; /* Gray-900 */
-            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
         }
-
-        h1, h2, h3, .serif {
+        
+        h1, h2, h3, h4 {
             font-family: 'Playfair Display', serif;
         }
 
-        /* Chart Container Styling - Mandatory Constraint */
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 350px;
-            max-height: 400px;
+        .tab-active {
+            border-bottom: 2px solid #1e40af;
+            color: #1e40af;
+            font-weight: 600;
         }
 
-        @media (min-width: 768px) {
-            .chart-container {
-                height: 400px;
-            }
+        .tab-inactive {
+            color: #64748b;
+            font-weight: 500;
         }
 
-        /* Card Styling */
-        .glass-card {
-            background: white;
-            border-radius: 1rem;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .tab-inactive:hover {
+            color: #334155;
         }
 
-        .glass-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #059669; /* Emerald-600 */
-            border-radius: 4px;
+        /* Print styles for the form */
+        @media print {
+            body { background: white; }
+            .no-print { display: none; }
+            .print-only { display: block; }
+            .page-break { page-break-before: always; }
         }
     </style>
-    <!-- Chosen Palette: "Executive Vibrance" -->
-    <!-- Primary: Emerald Green (#059669) - Represents Money/Growth/Resolution. -->
-    <!-- Secondary: Royal Blue (#1E3A8A) - Represents Trust/Corporate/Law. -->
-    <!-- Accent: Amber (#D97706) - Represents Opportunity/Bonus. -->
-    <!-- Background: Cool Gray (#F3F4F6). -->
-
-    <!-- Application Structure Plan:
-         1. Hero Section: High-impact introduction defining the "Legal Architect" persona.
-         2. The Strategic Pivot (Chart): Stacked Bar Chart comparing "Traditional Defense" vs. "Resolution Strategy" (Total Cost of Litigation).
-         3. The Compensation Structure (Chart): Bar Chart visualizing the $240k-$315k base + bonus potential.
-         4. The Firm Landscape (Stats): Grid of key firm attributes (AmLaw, Minority Owned, Coast-to-Coast).
-         5. Competency Profile (Chart): Radar Chart showing the mix of Negotiation, Risk Analysis, and Business Dev.
-         6. Workflow: A visual process flow of the "Settlement Counsel" methodology.
-         7. Requirements: Interactive checklist for Qualifications & Preferred Skills.
-    -->
-
-    <!-- Visualization & Content Choices:
-         1. Litigation Cost Model (Stacked Bar): Goal -> Compare. Justification -> Visualizes the core mandate: reducing "Total Cost" (Fees + Indemnity). Chart.js Stacked Bar is perfect for component comparison.
-         2. Compensation Range (Bar): Goal -> Inform. Justification -> Clearly shows the floor, ceiling, and "sky is the limit" bonus potential. Chart.js Bar.
-         3. Skill Radar (Radar): Goal -> Relationships. Justification -> Demonstrates that this role requires a balance of soft skills (negotiation) and hard skills (law), unlike a pure litigator. Chart.js Radar.
-         4. Workflow (HTML/CSS): Goal -> Change/Process. Justification -> Shows the linear progression of the role's function.
-    -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
 </head>
-<body class="antialiased">
+<body class="text-slate-800">
 
-    <!-- HERO SECTION -->
-    <header class="bg-gradient-to-br from-blue-900 via-blue-800 to-emerald-900 text-white min-h-[60vh] flex flex-col justify-center relative overflow-hidden px-6 py-20">
-        <div class="absolute top-0 right-0 w-64 h-64 bg-emerald-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-        <div class="absolute bottom-0 left-0 w-64 h-64 bg-amber-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-        
-        <div class="max-w-7xl mx-auto w-full z-10 relative">
-            <div class="inline-block px-3 py-1 mb-4 text-xs font-bold tracking-wider uppercase bg-emerald-500 rounded-full text-white shadow-lg">
-                New Strategic Hub: Philadelphia, PA
-            </div>
-            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-                Senior Strategic <br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-amber-300 serif italic">Resolution Partner</span>
-            </h1>
-            <p class="text-xl md:text-2xl text-blue-100 max-w-2xl font-light leading-relaxed mb-10">
-                Move beyond the courtroom. Become the <strong>Legal Architect</strong> who defines fiscal stewardship for national insurers and Fortune 500s.
-            </p>
-            <div class="flex flex-wrap gap-4">
-                <a href="#mandate" class="px-8 py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-lg shadow-lg transition-all transform hover:scale-105">
-                    Explore the Mandate
-                </a>
-                <a href="#compensation" class="px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/30 font-bold rounded-lg transition-all">
-                    View Compensation
-                </a>
-            </div>
-        </div>
-    </header>
-
-    <!-- SECTION 1: THE STRATEGIC MANDATE (COST MODEL) -->
-    <section id="mandate" class="py-20 px-6 max-w-7xl mx-auto">
-        <div class="mb-12">
-            <h2 class="text-4xl font-bold text-gray-900 mb-4 serif">The Mandate: Fiscal Stewardship</h2>
-            <p class="text-lg text-gray-600 max-w-3xl leading-relaxed">
-                This is not a traditional trial role. Your objective is to inject predictability into the litigation lifecycle. By operating separately from trial teams, you will perform <strong>Early Case Assessment</strong> to reduce the total cost of litigation.
-            </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <!-- Visualization -->
-            <div class="glass-card p-6 border-t-4 border-emerald-500">
-                <div class="chart-container">
-                    <canvas id="costChart"></canvas>
+    <!-- Navigation -->
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <i class="fa-solid fa-scale-balanced text-blue-800 text-2xl mr-3"></i>
+                    <span class="text-xl font-bold text-slate-800 tracking-tight">Lateral<span class="text-blue-800">Hub</span></span>
                 </div>
-                <p class="text-sm text-center text-gray-500 mt-4 italic">
-                    The "Settlement Counsel" Model drastically reduces legal spend while controlling indemnity.
-                </p>
+                <div class="hidden sm:flex space-x-8 items-center">
+                    <button onclick="switchTab('strategy')" id="tab-strategy" class="tab-active px-1 pt-1 text-sm leading-5 focus:outline-none transition duration-150 ease-in-out">Strategy & Mindset</button>
+                    <button onclick="switchTab('diligence')" id="tab-diligence" class="tab-inactive px-1 pt-1 text-sm leading-5 focus:outline-none transition duration-150 ease-in-out">Due Diligence</button>
+                    <button onclick="switchTab('financials')" id="tab-financials" class="tab-inactive px-1 pt-1 text-sm leading-5 focus:outline-none transition duration-150 ease-in-out">The "Book"</button>
+                    <button onclick="switchTab('apt-form')" id="tab-apt-form" class="tab-inactive px-1 pt-1 text-sm leading-5 focus:outline-none transition duration-150 ease-in-out">A.P.T. Form</button>
+                </div>
+                <div class="flex items-center sm:hidden">
+                    <button class="text-slate-500 hover:text-slate-700 focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
             </div>
+        </div>
+    </nav>
 
-            <!-- Context -->
-            <div class="space-y-8">
-                <div class="flex items-start">
-                    <div class="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-800 font-bold text-xl">1</div>
-                    <div class="ml-4">
-                        <h3 class="text-xl font-bold text-gray-900">Exposure Analysis</h3>
-                        <p class="text-gray-600 mt-2">
-                            Determine realistic settlement ranges and formulate defense budgets. Identify cases ripe for resolution before they incur unnecessary trial expenses.
-                        </p>
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <!-- TAB 1: STRATEGY & MINDSET -->
+        <div id="content-strategy" class="space-y-8 animate-fade-in">
+            <!-- Hero -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                <div class="bg-gradient-to-r from-slate-900 to-blue-900 px-8 py-12 text-white">
+                    <h1 class="text-4xl font-bold mb-4">The Strategic Lateral Move</h1>
+                    <p class="text-blue-100 text-lg max-w-3xl">
+                        Moving to a new law firm as a partner is more than just a job change; it is a merger of businesses. 
+                        This hub synthesizes insights from top legal recruiters to help you navigate the "Attorney Partner Transition" (A.P.T.).
+                    </p>
+                </div>
+                <div class="p-8 grid md:grid-cols-3 gap-8">
+                    <div class="col-span-2">
+                        <h2 class="text-2xl font-bold mb-4 text-slate-800">Why Transition?</h2>
+                        <p class="mb-4 text-slate-600">Based on industry data, lateral partner moves are rarely just about the base salary. They are driven by a need for a better platform to service clients, cultural alignment, or rate flexibility.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+                            <div class="bg-blue-50 p-5 rounded-xl border border-blue-100">
+                                <h3 class="font-bold text-blue-800 mb-2"><i class="fa-solid fa-chart-line mr-2"></i>The Growth Factor</h3>
+                                <p class="text-sm text-slate-600">Does the new firm offer cross-selling opportunities your current platform lacks? Can they support your "Mega Cases"?</p>
+                            </div>
+                            <div class="bg-emerald-50 p-5 rounded-xl border border-emerald-100">
+                                <h3 class="font-bold text-emerald-800 mb-2"><i class="fa-solid fa-coins mr-2"></i>The Value Proposition</h3>
+                                <p class="text-sm text-slate-600">Are you underpaid relative to your collections? Is your current firm's overhead eating into your equity distribution?</p>
+                            </div>
+                            <div class="bg-amber-50 p-5 rounded-xl border border-amber-100">
+                                <h3 class="font-bold text-amber-800 mb-2"><i class="fa-solid fa-handshake mr-2"></i>Cultural Fit</h3>
+                                <p class="text-sm text-slate-600">Are you a trial lawyer in a transactional firm? Alignment in values and work-style is the #1 predictor of retention.</p>
+                            </div>
+                            <div class="bg-purple-50 p-5 rounded-xl border border-purple-100">
+                                <h3 class="font-bold text-purple-800 mb-2"><i class="fa-solid fa-map-location-dot mr-2"></i>Geographic/Rate</h3>
+                                <p class="text-sm text-slate-600">Does your client base require rates that your current firm has outgrown, or vice versa?</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="flex items-start">
-                    <div class="flex-shrink-0 w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center text-amber-800 font-bold text-xl">2</div>
-                    <div class="ml-4">
-                        <h3 class="text-xl font-bold text-gray-900">Bulk Resolution</h3>
-                        <p class="text-gray-600 mt-2">
-                            Manage high-volume claims portfolios involving <strong>Mass Torts, Product Liability, and Employment</strong>. Use structured negotiation to resolve clusters.
-                        </p>
+                    
+                    <div class="bg-slate-50 rounded-xl p-6 border border-slate-200">
+                        <h3 class="font-bold text-lg mb-4 border-b border-slate-200 pb-2">The "Partner" Mindset</h3>
+                        <ul class="space-y-4 text-sm">
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i>
+                                <span><strong>Don't Represent Yourself:</strong> Use an intermediary to maintain anonymity and leverage negotiation power.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i>
+                                <span><strong>Value is Portable:</strong> Your value isn't just what you billed, but what you can move.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i>
+                                <span><strong>Exclusivity Matters:</strong> Shopping your resume to 20 firms dilutes your brand. Target specifically.</span>
+                            </li>
+                        </ul>
+                        <div class="mt-6 p-4 bg-white rounded border border-slate-200 shadow-sm">
+                            <p class="italic text-xs text-slate-500">
+                                "First impressions mean a lot in life, and they mean a great deal particularly within the legal field."
+                            </p>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 2: THE FIRM (STATISTICS) -->
-    <section class="py-20 bg-blue-900 text-white relative">
-        <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <h2 class="text-4xl font-bold mb-12 text-center serif">A National Powerhouse</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Stat Card 1 -->
-                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-white/20 text-center hover:bg-white/20 transition">
-                    <div class="text-5xl font-bold text-emerald-400 mb-2">Tier 1</div>
-                    <div class="text-sm uppercase tracking-wider font-semibold">Insurance Defense</div>
-                    <p class="text-xs text-blue-200 mt-2">Chambers-Recognized Leader</p>
-                </div>
-
-                <!-- Stat Card 2 -->
-                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-white/20 text-center hover:bg-white/20 transition">
-                    <div class="text-5xl font-bold text-amber-400 mb-2">#1</div>
-                    <div class="text-sm uppercase tracking-wider font-semibold">Minority & Women Owned</div>
-                    <p class="text-xs text-blue-200 mt-2">Largest in the U.S.</p>
-                </div>
-
-                <!-- Stat Card 3 -->
-                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-white/20 text-center hover:bg-white/20 transition">
-                    <div class="text-5xl font-bold text-emerald-400 mb-2">50+</div>
-                    <div class="text-sm uppercase tracking-wider font-semibold">Offices Nationally</div>
-                    <p class="text-xs text-blue-200 mt-2">Coast-to-Coast Footprint</p>
-                </div>
-
-                <!-- Stat Card 4 -->
-                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-white/20 text-center hover:bg-white/20 transition">
-                    <div class="text-5xl font-bold text-amber-400 mb-2">Hub</div>
-                    <div class="text-sm uppercase tracking-wider font-semibold">Philadelphia, PA</div>
-                    <p class="text-xs text-blue-200 mt-2">New Strategic Milestone</p>
                 </div>
             </div>
             
-            <p class="text-center mt-12 text-blue-200 max-w-3xl mx-auto">
-                "We are celebrated not only for our courtroom advocacy but for our innovative approach to legal service delivery. A culture that champions diversity, autonomy, and rapid career ascension."
-            </p>
-        </div>
-    </section>
-
-    <!-- SECTION 3: COMPENSATION (CHART) -->
-    <section id="compensation" class="py-20 px-6 max-w-7xl mx-auto">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <!-- Text Content -->
-            <div>
-                <h2 class="text-4xl font-bold text-gray-900 mb-6 serif">Lucrative Architecture</h2>
-                <p class="text-lg text-gray-600 mb-6">
-                    We reward strategic impact. The compensation package is designed for entrepreneurial attorneys with a vision for growth.
-                </p>
-                <ul class="space-y-4">
-                    <li class="flex items-center text-gray-700 font-semibold p-4 bg-white rounded-lg shadow-sm border-l-4 border-emerald-500">
-                        <span class="text-emerald-600 text-xl mr-3">&#10003;</span>
-                        Base Salary: $240,000 – $315,000
-                    </li>
-                    <li class="flex items-center text-gray-700 font-semibold p-4 bg-white rounded-lg shadow-sm border-l-4 border-amber-500">
-                        <span class="text-amber-600 text-xl mr-3">&#10003;</span>
-                        Performance & Origination Bonuses
-                    </li>
-                    <li class="flex items-center text-gray-700 font-semibold p-4 bg-white rounded-lg shadow-sm border-l-4 border-blue-500">
-                        <span class="text-blue-600 text-xl mr-3">&#10003;</span>
-                        $200k+ Portable Book Advantage
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Chart -->
-            <div class="glass-card p-6">
-                <div class="chart-container">
-                    <canvas id="salaryChart"></canvas>
+            <!-- Interview Prep -->
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                    <h2 class="text-xl font-bold mb-4 text-slate-800">Interview Strategy: What They Will Ask</h2>
+                    <div class="space-y-3">
+                        <details class="group">
+                            <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-3 bg-slate-50 rounded-lg hover:bg-slate-100 transition">
+                                <span>"Is your book portable?"</span>
+                                <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-xs"></i></span>
+                            </summary>
+                            <div class="text-slate-600 text-sm mt-3 px-3">
+                                <p>They are asking: "How much of your revenue is tied to you personally vs. the firm's brand?" Be prepared to discuss client longevity and relationships.</p>
+                            </div>
+                        </details>
+                        <details class="group">
+                            <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-3 bg-slate-50 rounded-lg hover:bg-slate-100 transition">
+                                <span>"Why are you leaving?"</span>
+                                <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-xs"></i></span>
+                            </summary>
+                            <div class="text-slate-600 text-sm mt-3 px-3">
+                                <p>Avoid negativity. Focus on "Pull" factors (growth, platform, synergy) rather than "Push" factors (bad management, low pay).</p>
+                            </div>
+                        </details>
+                        <details class="group">
+                            <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-3 bg-slate-50 rounded-lg hover:bg-slate-100 transition">
+                                <span>"What support do you need?"</span>
+                                <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-xs"></i></span>
+                            </summary>
+                            <div class="text-slate-600 text-sm mt-3 px-3">
+                                <p>Be specific. "I need 1 senior associate and 50% of a paralegal." Knowing your numbers signals competence.</p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                    <h2 class="text-xl font-bold mb-4 text-slate-800">Interview Strategy: What YOU Should Ask</h2>
+                    <ul class="space-y-3 text-sm text-slate-700">
+                        <li class="flex items-center p-2"><i class="fa-solid fa-question-circle text-blue-500 mr-3"></i> What is the firm's financial stability and debt structure?</li>
+                        <li class="flex items-center p-2"><i class="fa-solid fa-question-circle text-blue-500 mr-3"></i> How does the firm handle cross-origination credits?</li>
+                        <li class="flex items-center p-2"><i class="fa-solid fa-question-circle text-blue-500 mr-3"></i> Has management ever led during a recession?</li>
+                        <li class="flex items-center p-2"><i class="fa-solid fa-question-circle text-blue-500 mr-3"></i> What is the firm's track record with lateral integration?</li>
+                        <li class="flex items-center p-2"><i class="fa-solid fa-question-circle text-blue-500 mr-3"></i> How are conflicts managed during transition?</li>
+                    </ul>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- SECTION 4: COMPETENCY PROFILE (RADAR) -->
-    <section class="py-20 bg-gray-50 px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-12">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4 serif">The "Legal Architect" Profile</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">
-                    We are not looking for a standard litigator. We need a specialized resolution strategist.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <div class="glass-card p-6 flex items-center justify-center">
-                    <div class="chart-container">
-                        <canvas id="skillsChart"></canvas>
+        <!-- TAB 2: DUE DILIGENCE CHECKLIST -->
+        <div id="content-diligence" class="hidden space-y-6">
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+                <div class="flex justify-between items-end mb-6">
+                    <div>
+                        <h2 class="text-2xl font-bold text-slate-800">Lateral Partner Due Diligence</h2>
+                        <p class="text-slate-500 mt-2">A consolidated checklist to vet potential firms.</p>
+                    </div>
+                    <div class="text-right">
+                        <span id="diligence-progress" class="text-3xl font-bold text-blue-600">0%</span>
+                        <p class="text-xs text-slate-400">Completion</p>
                     </div>
                 </div>
 
                 <div class="space-y-6">
-                    <div class="bg-white p-6 rounded-xl shadow-sm">
-                        <h3 class="text-lg font-bold text-blue-900 border-b pb-2 mb-3">Qualifications</h3>
-                        <ul class="space-y-2 text-sm text-gray-700">
-                            <li>&#8226; <strong>Juris Doctor (J.D.)</strong> from ABA-accredited Law School.</li>
-                            <li>&#8226; Active admission to <strong>Pennsylvania State Bar</strong>.</li>
-                            <li>&#8226; <strong>10+ years</strong> of litigation experience (Insurance/General Liability).</li>
-                            <li>&#8226; Proven history of independent, high-stakes negotiations.</li>
-                            <li>&#8226; Deep understanding of claims valuation & risk management.</li>
-                        </ul>
+                    <!-- Section: Financials -->
+                    <div>
+                        <h3 class="font-bold text-slate-700 border-b pb-2 mb-3">Financial Health</h3>
+                        <div class="grid md:grid-cols-2 gap-3">
+                            <label class="flex items-center space-x-3 p-3 border rounded hover:bg-slate-50 cursor-pointer">
+                                <input type="checkbox" class="diligence-check h-5 w-5 text-blue-600" onchange="updateProgress()">
+                                <span class="text-sm">Review firm's Profit Per Partner (PPP) trends (3-year lookback)</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-3 border rounded hover:bg-slate-50 cursor-pointer">
+                                <input type="checkbox" class="diligence-check h-5 w-5 text-blue-600" onchange="updateProgress()">
+                                <span class="text-sm">Understand capital contribution requirements & return policy</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-3 border rounded hover:bg-slate-50 cursor-pointer">
+                                <input type="checkbox" class="diligence-check h-5 w-5 text-blue-600" onchange="updateProgress()">
+                                <span class="text-sm">Verify debt loads and lines of credit status</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-3 border rounded hover:bg-slate-50 cursor-pointer">
+                                <input type="checkbox" class="diligence-check h-5 w-5 text-blue-600" onchange="updateProgress()">
+                                <span class="text-sm">Check realization rates firm-wide</span>
+                            </label>
+                        </div>
                     </div>
-                    
-                    <div class="bg-emerald-50 p-6 rounded-xl shadow-sm border border-emerald-100">
-                        <h3 class="text-lg font-bold text-emerald-900 border-b border-emerald-200 pb-2 mb-3">Preferred "Plus" Skills</h3>
-                        <ul class="space-y-2 text-sm text-gray-700">
-                            <li>&#8226; <strong>Portable Book ($200k+)</strong> highly advantageous.</li>
-                            <li>&#8226; Admission to <strong>NJ or NY Bar</strong> for regional practice.</li>
-                            <li>&#8226; Certification in <strong>Mediation / ADR</strong>.</li>
-                            <li>&#8226; Experience with <strong>Class Action / Mass Tort</strong> clusters.</li>
-                        </ul>
+
+                    <!-- Section: Conflicts & Clients -->
+                    <div>
+                        <h3 class="font-bold text-slate-700 border-b pb-2 mb-3">Conflicts & Integration</h3>
+                        <div class="grid md:grid-cols-2 gap-3">
+                            <label class="flex items-center space-x-3 p-3 border rounded hover:bg-slate-50 cursor-pointer">
+                                <input type="checkbox" class="diligence-check h-5 w-5 text-blue-600" onchange="updateProgress()">
+                                <span class="text-sm">Run preliminary conflicts check on Top 10 clients</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-3 border rounded hover:bg-slate-50 cursor-pointer">
+                                <input type="checkbox" class="diligence-check h-5 w-5 text-blue-600" onchange="updateProgress()">
+                                <span class="text-sm">Confirm firm's malpractice insurance coverage limits</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-3 border rounded hover:bg-slate-50 cursor-pointer">
+                                <input type="checkbox" class="diligence-check h-5 w-5 text-blue-600" onchange="updateProgress()">
+                                <span class="text-sm">Discuss client billing rate compatibility</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-3 border rounded hover:bg-slate-50 cursor-pointer">
+                                <input type="checkbox" class="diligence-check h-5 w-5 text-blue-600" onchange="updateProgress()">
+                                <span class="text-sm">Review non-compete/partnership agreement terms</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Section: Culture & Support -->
+                    <div>
+                        <h3 class="font-bold text-slate-700 border-b pb-2 mb-3">Culture & Operations</h3>
+                        <div class="grid md:grid-cols-2 gap-3">
+                            <label class="flex items-center space-x-3 p-3 border rounded hover:bg-slate-50 cursor-pointer">
+                                <input type="checkbox" class="diligence-check h-5 w-5 text-blue-600" onchange="updateProgress()">
+                                <span class="text-sm">Interview 2-3 partners in your specific practice area</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-3 border rounded hover:bg-slate-50 cursor-pointer">
+                                <input type="checkbox" class="diligence-check h-5 w-5 text-blue-600" onchange="updateProgress()">
+                                <span class="text-sm">Assess associate/paralegal availability & quality</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-3 border rounded hover:bg-slate-50 cursor-pointer">
+                                <input type="checkbox" class="diligence-check h-5 w-5 text-blue-600" onchange="updateProgress()">
+                                <span class="text-sm">Review technology stack (Remote work, AI, Billing software)</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-3 border rounded hover:bg-slate-50 cursor-pointer">
+                                <input type="checkbox" class="diligence-check h-5 w-5 text-blue-600" onchange="updateProgress()">
+                                <span class="text-sm">Clarify origination credit sharing rules</span>
+                            </label>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- SECTION 5: WORKFLOW PROCESS -->
-    <section class="py-20 px-6 max-w-7xl mx-auto">
-        <h2 class="text-4xl font-bold text-gray-900 mb-12 text-center serif">The Resolution Workflow</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <!-- Step 1 -->
-            <div class="p-8 bg-white rounded-xl shadow-lg border-t-8 border-blue-600 relative group hover:-translate-y-2 transition duration-300">
-                <div class="text-6xl mb-4">🔍</div>
-                <h3 class="text-xl font-bold mb-3">1. Assessment</h3>
-                <p class="text-gray-600 text-sm">
-                    Early case exposure analysis. Define the budget. Determine if the case is ripe for resolution.
-                </p>
-            </div>
+        <!-- TAB 3: FINANCIALS / THE BOOK -->
+        <div id="content-financials" class="hidden space-y-8">
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                <div class="p-8">
+                    <h2 class="text-2xl font-bold mb-6 text-slate-800">Assessing Your Portable Business</h2>
+                    <p class="mb-6 text-slate-600 max-w-4xl">
+                        Firms don't just buy your past performance; they buy your future revenue stream. 
+                        Use this guide to structure your data before filling out the LPQ (Lateral Partner Questionnaire).
+                    </p>
 
-            <!-- Arrow (Desktop only) -->
-            <div class="hidden md:flex items-center justify-center text-4xl text-gray-300 font-bold">
-                &#8594;
-            </div>
+                    <div class="grid lg:grid-cols-2 gap-12">
+                        <!-- Left: Key Definitions -->
+                        <div>
+                            <h3 class="text-lg font-bold text-blue-800 mb-4">Key Metrics You Must Know</h3>
+                            <div class="space-y-4">
+                                <div class="p-4 border-l-4 border-blue-500 bg-slate-50">
+                                    <h4 class="font-bold">Origination vs. Working Attorney</h4>
+                                    <p class="text-sm text-slate-600 mt-1">
+                                        <strong>Origination:</strong> You brought the client in. <br>
+                                        <strong>Working:</strong> You did the hours. <br>
+                                        *Firms value origination for growth, working for capacity.*
+                                    </p>
+                                </div>
+                                <div class="p-4 border-l-4 border-emerald-500 bg-slate-50">
+                                    <h4 class="font-bold">Realization Rate</h4>
+                                    <p class="text-sm text-slate-600 mt-1">
+                                        The % of your billed time that is actually collected. <br>
+                                        <em>Formula: Collected Revenue / Billed Amount</em><br>
+                                        <span class="text-xs text-red-500">Warning: Rates below 85% raise red flags about client quality.</span>
+                                    </p>
+                                </div>
+                                <div class="p-4 border-l-4 border-purple-500 bg-slate-50">
+                                    <h4 class="font-bold">Portability Probability</h4>
+                                    <p class="text-sm text-slate-600 mt-1">
+                                        Not every client follows. Categorize them:
+                                        <ul class="list-disc ml-5 mt-1 text-xs">
+                                            <li><strong>Certain:</strong> Institutional ties to you personally.</li>
+                                            <li><strong>Likely:</strong> Good relationship, but price sensitive.</li>
+                                            <li><strong>Unlikely:</strong> Tied to the firm's brand or specific conflict.</li>
+                                        </ul>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
 
-            <!-- Step 2 -->
-            <div class="p-8 bg-white rounded-xl shadow-lg border-t-8 border-emerald-500 relative group hover:-translate-y-2 transition duration-300">
-                <div class="text-6xl mb-4">🤝</div>
-                <h3 class="text-xl font-bold mb-3">2. Strategy</h3>
-                <p class="text-gray-600 text-sm">
-                    Spearhead mediations and structured negotiations. "The Closer" steps in to manage multi-jurisdictional clusters.
-                </p>
-            </div>
-            
-             <!-- Arrow (Desktop only) -->
-            <div class="hidden md:flex items-center justify-center text-4xl text-gray-300 font-bold">
-                &#8594;
-            </div>
-
-            <!-- Step 3 -->
-            <div class="p-8 bg-white rounded-xl shadow-lg border-t-8 border-amber-500 relative group hover:-translate-y-2 transition duration-300">
-                <div class="text-6xl mb-4">📉</div>
-                <h3 class="text-xl font-bold mb-3">3. Result</h3>
-                <p class="text-gray-600 text-sm">
-                    Reduction in Total Cost of Litigation (Fees + Indemnity). Predictable outcomes for institutional clients.
-                </p>
+                        <!-- Right: Interactive Calculator -->
+                        <div class="bg-slate-800 text-white rounded-xl p-6">
+                            <h3 class="text-lg font-bold mb-4">Simple Revenue Projection</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-xs uppercase tracking-wide text-slate-400 mb-1">Total Annual Collections (Last 3 Years Avg)</label>
+                                    <div class="flex items-center">
+                                        <span class="text-slate-400 mr-2">$</span>
+                                        <input type="number" id="calc-revenue" class="w-full bg-slate-700 border border-slate-600 rounded p-2 text-white" placeholder="e.g. 1500000">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-xs uppercase tracking-wide text-slate-400 mb-1">Estimated Portability %</label>
+                                    <input type="range" id="calc-percent" min="0" max="100" value="70" class="w-full h-2 bg-slate-600 rounded-lg appearance-none cursor-pointer">
+                                    <div class="text-right text-sm text-blue-300" id="percent-display">70%</div>
+                                </div>
+                                <div class="border-t border-slate-600 pt-4 mt-2">
+                                    <p class="text-sm text-slate-400">Projected Portable Revenue:</p>
+                                    <p class="text-3xl font-bold text-emerald-400" id="calc-result">$0</p>
+                                </div>
+                                <p class="text-xs text-slate-500 mt-2 italic">
+                                    *This is the number the Hiring Partner cares about most. Be conservative.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
 
-    <!-- FOOTER -->
-    <footer class="bg-gray-900 text-gray-400 py-12 px-6">
-        <div class="max-w-4xl mx-auto text-center space-y-6">
-            <h3 class="text-white text-2xl font-bold serif">Ready to Anchor the Strategy?</h3>
-            <p class="text-sm">
-                This is a job advertisement on behalf of our client and does not reflect the full job description. Any qualified candidates are encouraged to apply. You will need to provide law school transcripts, a writing sample or deal sheets, and a cover letter. This posting does not constitute an offer of employment.
-            </p>
-            <div class="pt-6 border-t border-gray-800">
-                <span class="text-xs uppercase tracking-widest">Job ID: Strategic Resolution Partner - Philadelphia</span>
+        <!-- TAB 4: A.P.T. FORM -->
+        <div id="content-apt-form" class="hidden">
+            <div class="bg-white rounded-none md:rounded-2xl shadow-lg border border-slate-200 max-w-4xl mx-auto print-only">
+                <div class="p-8 md:p-12">
+                    <div class="flex justify-between items-center mb-8 border-b-2 border-slate-800 pb-4">
+                        <div>
+                            <h1 class="text-3xl font-bold text-slate-900">Attorney Partner Transition (A.P.T.)</h1>
+                            <p class="text-slate-500 uppercase tracking-widest text-sm mt-1">Confidential Candidate Information</p>
+                        </div>
+                        <div class="text-right hidden sm:block">
+                            <button onclick="window.print()" class="bg-slate-900 text-white px-4 py-2 rounded hover:bg-slate-800 text-sm no-print">
+                                <i class="fa-solid fa-print mr-2"></i> Print / Save as PDF
+                            </button>
+                        </div>
+                    </div>
+
+                    <form class="space-y-8">
+                        <!-- 1. Candidate Info -->
+                        <section>
+                            <h3 class="text-lg font-bold text-slate-800 uppercase border-b border-slate-200 mb-4 pb-1">1. Candidate Information</h3>
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium text-slate-700 mb-1">Full Name</label>
+                                    <input type="text" class="w-full border-b border-slate-300 focus:border-blue-600 outline-none py-1 bg-transparent">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-slate-700 mb-1">Current Firm</label>
+                                    <input type="text" class="w-full border-b border-slate-300 focus:border-blue-600 outline-none py-1 bg-transparent">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-slate-700 mb-1">Position/Title</label>
+                                    <input type="text" class="w-full border-b border-slate-300 focus:border-blue-600 outline-none py-1 bg-transparent">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-slate-700 mb-1">Practice Area(s)</label>
+                                    <input type="text" class="w-full border-b border-slate-300 focus:border-blue-600 outline-none py-1 bg-transparent">
+                                </div>
+                                <div class="md:col-span-2">
+                                    <label class="block text-sm font-medium text-slate-700 mb-1">Preferred Contact (Email & Phone)</label>
+                                    <input type="text" class="w-full border-b border-slate-300 focus:border-blue-600 outline-none py-1 bg-transparent">
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- 2. Transition Motivation -->
+                        <section>
+                            <h3 class="text-lg font-bold text-slate-800 uppercase border-b border-slate-200 mb-4 pb-1">2. Transition Motivation & Timeline</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-slate-700 mb-1">Top Three Reasons for Transition</label>
+                                    <textarea class="w-full border border-slate-300 rounded p-2 focus:border-blue-600 outline-none" rows="3"></textarea>
+                                </div>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <span class="block text-sm font-medium text-slate-700 mb-1">Equity Interest in Current Firm?</span>
+                                        <div class="flex space-x-4">
+                                            <label class="inline-flex items-center"><input type="radio" name="equity" class="form-radio text-blue-600"> <span class="ml-2">Yes</span></label>
+                                            <label class="inline-flex items-center"><input type="radio" name="equity" class="form-radio text-blue-600"> <span class="ml-2">No</span></label>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <span class="block text-sm font-medium text-slate-700 mb-1">Capital Contribution Made?</span>
+                                        <div class="flex space-x-4">
+                                            <label class="inline-flex items-center"><input type="radio" name="capital" class="form-radio text-blue-600"> <span class="ml-2">Yes</span></label>
+                                            <label class="inline-flex items-center"><input type="radio" name="capital" class="form-radio text-blue-600"> <span class="ml-2">No</span></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-slate-700 mb-1">Notice Period Required</label>
+                                    <input type="text" class="w-full border-b border-slate-300 focus:border-blue-600 outline-none py-1 bg-transparent">
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- 3. Financials -->
+                        <section>
+                            <h3 class="text-lg font-bold text-slate-800 uppercase border-b border-slate-200 mb-4 pb-1">3. Financial Metrics (Historical)</h3>
+                            <div class="overflow-x-auto">
+                                <table class="min-w-full text-sm text-left">
+                                    <thead>
+                                        <tr class="bg-slate-50 border-b">
+                                            <th class="py-2 px-2">Year</th>
+                                            <th class="py-2 px-2">Personal Billings</th>
+                                            <th class="py-2 px-2">Total Billings</th>
+                                            <th class="py-2 px-2">Personal Collections</th>
+                                            <th class="py-2 px-2">Total Collections</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-slate-100">
+                                        <tr>
+                                            <td class="py-2 font-medium">YTD (2025)</td>
+                                            <td><input type="text" class="w-full bg-slate-50 border-none p-1" placeholder="$"></td>
+                                            <td><input type="text" class="w-full bg-slate-50 border-none p-1" placeholder="$"></td>
+                                            <td><input type="text" class="w-full bg-slate-50 border-none p-1" placeholder="$"></td>
+                                            <td><input type="text" class="w-full bg-slate-50 border-none p-1" placeholder="$"></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-2 font-medium">2024</td>
+                                            <td><input type="text" class="w-full bg-slate-50 border-none p-1" placeholder="$"></td>
+                                            <td><input type="text" class="w-full bg-slate-50 border-none p-1" placeholder="$"></td>
+                                            <td><input type="text" class="w-full bg-slate-50 border-none p-1" placeholder="$"></td>
+                                            <td><input type="text" class="w-full bg-slate-50 border-none p-1" placeholder="$"></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-2 font-medium">2023</td>
+                                            <td><input type="text" class="w-full bg-slate-50 border-none p-1" placeholder="$"></td>
+                                            <td><input type="text" class="w-full bg-slate-50 border-none p-1" placeholder="$"></td>
+                                            <td><input type="text" class="w-full bg-slate-50 border-none p-1" placeholder="$"></td>
+                                            <td><input type="text" class="w-full bg-slate-50 border-none p-1" placeholder="$"></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-2 font-medium">2022</td>
+                                            <td><input type="text" class="w-full bg-slate-50 border-none p-1" placeholder="$"></td>
+                                            <td><input type="text" class="w-full bg-slate-50 border-none p-1" placeholder="$"></td>
+                                            <td><input type="text" class="w-full bg-slate-50 border-none p-1" placeholder="$"></td>
+                                            <td><input type="text" class="w-full bg-slate-50 border-none p-1" placeholder="$"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="mt-4 grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium text-slate-700 mb-1">Average Billing Rate ($/hr)</label>
+                                    <input type="text" class="w-full border-b border-slate-300 focus:border-blue-600 outline-none py-1 bg-transparent">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-slate-700 mb-1">Typical Collection %</label>
+                                    <input type="text" class="w-full border-b border-slate-300 focus:border-blue-600 outline-none py-1 bg-transparent">
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- 4. Client Profile -->
+                        <section>
+                            <h3 class="text-lg font-bold text-slate-800 uppercase border-b border-slate-200 mb-4 pb-1">4. Client Profile & Conflicts</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-slate-700 mb-1">Industry Sectors Served</label>
+                                    <input type="text" class="w-full border-b border-slate-300 focus:border-blue-600 outline-none py-1 bg-transparent">
+                                </div>
+                                <div>
+                                    <span class="block text-sm font-medium text-slate-700 mb-2">Primary Matter Types</span>
+                                    <div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-sm">
+                                        <label><input type="checkbox" class="mr-2"> Litigation</label>
+                                        <label><input type="checkbox" class="mr-2"> Transactional</label>
+                                        <label><input type="checkbox" class="mr-2"> Regulatory</label>
+                                        <label><input type="checkbox" class="mr-2"> IP</label>
+                                        <label><input type="checkbox" class="mr-2"> Employment</label>
+                                        <label><input type="checkbox" class="mr-2"> Real Estate</label>
+                                        <label><input type="checkbox" class="mr-2"> Corporate</label>
+                                        <label><input type="checkbox" class="mr-2"> Other</label>
+                                    </div>
+                                </div>
+                                <div class="bg-blue-50 p-4 rounded border border-blue-100">
+                                    <label class="block text-sm font-bold text-blue-900 mb-1">Potential Conflicts?</label>
+                                    <p class="text-xs text-blue-700 mb-2">Are there any major adversaries or conflicts that would prevent you from moving to certain firms?</p>
+                                    <textarea class="w-full border border-blue-200 rounded p-2 focus:border-blue-600 outline-none bg-white" rows="2"></textarea>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- 5. Team -->
+                        <section>
+                            <h3 class="text-lg font-bold text-slate-800 uppercase border-b border-slate-200 mb-4 pb-1">5. Team & Compensation</h3>
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium text-slate-700 mb-1">Current Base Salary</label>
+                                    <input type="text" class="w-full border-b border-slate-300 focus:border-blue-600 outline-none py-1 bg-transparent">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-slate-700 mb-1">Total Comp (Last Year)</label>
+                                    <input type="text" class="w-full border-b border-slate-300 focus:border-blue-600 outline-none py-1 bg-transparent">
+                                </div>
+                                <div class="md:col-span-2">
+                                    <span class="block text-sm font-medium text-slate-700 mb-2">Staff to Transition?</span>
+                                    <div class="grid grid-cols-3 gap-4 text-sm bg-slate-50 p-3 rounded">
+                                        <div>
+                                            <label>Associates (Qty)</label>
+                                            <input type="number" class="w-full border rounded p-1">
+                                        </div>
+                                        <div>
+                                            <label>Paralegals (Qty)</label>
+                                            <input type="number" class="w-full border rounded p-1">
+                                        </div>
+                                        <div>
+                                            <label>Admin (Qty)</label>
+                                            <input type="number" class="w-full border rounded p-1">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Certification -->
+                        <section class="border-t-2 border-slate-200 pt-6 mt-8">
+                            <p class="text-xs text-slate-500 mb-6 italic">
+                                I certify that the information provided is accurate and complete to the best of my knowledge. I understand that this form is for preliminary assessment purposes.
+                            </p>
+                            <div class="grid md:grid-cols-2 gap-12">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-400 uppercase mb-4">Signature</label>
+                                    <div class="border-b border-slate-900 h-8"></div>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-400 uppercase mb-4">Date</label>
+                                    <div class="border-b border-slate-900 h-8"></div>
+                                </div>
+                            </div>
+                        </section>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12 mt-12 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h5 class="text-white font-bold mb-4">LateralHub</h5>
+                    <p class="text-sm">
+                        Resources for Attorney Partner Transitions.
+                        <br>Derived from industry standard questionnaires and recruiter checklists.
+                    </p>
+                </div>
+                <div class="md:text-right">
+                    <p class="text-xs text-slate-500">
+                        <strong>Disclaimer:</strong> This tool is for informational purposes only and does not constitute legal advice. 
+                        Always consult with professional recruiters or legal counsel regarding employment agreements and non-competes.
+                    </p>
+                </div>
             </div>
         </div>
     </footer>
 
-    <!-- SCRIPTS -->
+    <!-- Scripts -->
     <script>
-        // --- HELPER: Label Splitting Logic (Mandatory) ---
-        function splitLabel(str, maxLen = 16) {
-            if (str.length <= maxLen) return str;
-            const words = str.split(' ');
-            const lines = [];
-            let currentLine = words[0];
+        // Tab Switching Logic
+        function switchTab(tabId) {
+            // Hide all content
+            ['strategy', 'diligence', 'financials', 'apt-form'].forEach(id => {
+                document.getElementById('content-' + id).classList.add('hidden');
+                document.getElementById('tab-' + id).classList.remove('tab-active');
+                document.getElementById('tab-' + id).classList.add('tab-inactive');
+            });
 
-            for (let i = 1; i < words.length; i++) {
-                if (currentLine.length + 1 + words[i].length <= maxLen) {
-                    currentLine += ' ' + words[i];
-                } else {
-                    lines.push(currentLine);
-                    currentLine = words[i];
-                }
-            }
-            lines.push(currentLine);
-            return lines;
+            // Show selected content
+            document.getElementById('content-' + tabId).classList.remove('hidden');
+            document.getElementById('tab-' + tabId).classList.add('tab-active');
+            document.getElementById('tab-' + tabId).classList.remove('tab-inactive');
         }
 
-        // --- HELPER: Tooltip Callback (Mandatory) ---
-        const tooltipConfig = {
-            callbacks: {
-                title: function(tooltipItems) {
-                    const item = tooltipItems[0];
-                    let label = item.chart.data.labels[item.dataIndex];
-                    if (Array.isArray(label)) {
-                        return label.join(' ');
-                    } else {
-                        return label;
-                    }
-                }
-            }
-        };
+        // Diligence Progress Logic
+        function updateProgress() {
+            const checks = document.querySelectorAll('.diligence-check');
+            const total = checks.length;
+            let checked = 0;
+            checks.forEach(c => {
+                if (c.checked) checked++;
+            });
+            
+            const percent = Math.round((checked / total) * 100);
+            document.getElementById('diligence-progress').innerText = percent + '%';
+        }
 
-        // --- CHART 1: COST MODEL (Stacked Bar) ---
-        const ctxCost = document.getElementById('costChart').getContext('2d');
-        const labelsCost = ['Traditional Defense', 'Resolution Strategy'].map(l => splitLabel(l));
-        
-        new Chart(ctxCost, {
-            type: 'bar',
-            data: {
-                labels: labelsCost,
-                datasets: [
-                    {
-                        label: 'Legal Fees (Churn)',
-                        data: [65, 25], // Significant reduction
-                        backgroundColor: '#1E3A8A', // Blue
-                        barThickness: 50
-                    },
-                    {
-                        label: 'Indemnity Payout',
-                        data: [50, 45], // Slight reduction or controlled
-                        backgroundColor: '#D97706', // Amber
-                        barThickness: 50
-                    }
-                ]
-            },
-            options: {
-                maintainAspectRatio: false,
-                scales: {
-                    x: { stacked: true, grid: { display: false } },
-                    y: { 
-                        stacked: true, 
-                        display: false, // Abstract numbers
-                        grid: { display: false } 
-                    }
-                },
-                plugins: {
-                    tooltip: tooltipConfig,
-                    legend: { position: 'bottom' },
-                    title: {
-                        display: true,
-                        text: 'Total Cost of Litigation (Illustrative)',
-                        font: { size: 16, family: "'Playfair Display', serif" }
-                    }
-                }
-            }
-        });
+        // Revenue Calculator Logic
+        const revInput = document.getElementById('calc-revenue');
+        const percentInput = document.getElementById('calc-percent');
+        const percentDisplay = document.getElementById('percent-display');
+        const resultDisplay = document.getElementById('calc-result');
 
-        // --- CHART 2: COMPENSATION (Bar) ---
-        const ctxSalary = document.getElementById('salaryChart').getContext('2d');
-        const labelsSalary = ['Base Floor', 'Base Ceiling', 'With Book/Bonus'].map(l => splitLabel(l));
+        function calculateRevenue() {
+            const revenue = parseFloat(revInput.value) || 0;
+            const percent = parseInt(percentInput.value) || 0;
+            
+            percentDisplay.innerText = percent + '%';
+            
+            const projection = revenue * (percent / 100);
+            resultDisplay.innerText = '$' + projection.toLocaleString('en-US', {
+                maximumFractionDigits: 0
+            });
+        }
 
-        new Chart(ctxSalary, {
-            type: 'bar',
-            data: {
-                labels: labelsSalary,
-                datasets: [{
-                    label: 'Annual Compensation ($USD)',
-                    data: [240000, 315000, 420000], // 420k represents "Lucrative Bonuses" potential
-                    backgroundColor: [
-                        '#60A5FA', // Light Blue
-                        '#1E3A8A', // Dark Blue
-                        '#059669'  // Emerald (Bonus)
-                    ],
-                    borderRadius: 8
-                }]
-            },
-            options: {
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        ticks: {
-                            callback: function(value) { return '$' + value / 1000 + 'k'; }
-                        }
-                    },
-                    x: { grid: { display: false } }
-                },
-                plugins: {
-                    tooltip: tooltipConfig,
-                    legend: { display: false },
-                    title: {
-                        display: true,
-                        text: 'Compensation Potential',
-                        font: { size: 16, family: "'Playfair Display', serif" }
-                    }
-                }
-            }
-        });
+        revInput.addEventListener('input', calculateRevenue);
+        percentInput.addEventListener('input', calculateRevenue);
 
-        // --- CHART 3: SKILLS PROFILE (Radar) ---
-        const ctxSkills = document.getElementById('skillsChart').getContext('2d');
-        const rawSkills = [
-            'Negotiation Strategy', 
-            'Risk Analysis', 
-            'Insurance Coverage', 
-            'Litigation Mgmt', 
-            'Business Development',
-            'Trial Advocacy'
-        ];
-        const labelsSkills = rawSkills.map(l => splitLabel(l, 14));
-
-        new Chart(ctxSkills, {
-            type: 'radar',
-            data: {
-                labels: labelsSkills,
-                datasets: [{
-                    label: 'Ideal Candidate Profile',
-                    data: [95, 90, 85, 80, 75, 40], // Low on "Trial Advocacy" because role operates separately
-                    fill: true,
-                    backgroundColor: 'rgba(5, 150, 105, 0.2)', // Emerald transparent
-                    borderColor: '#059669',
-                    pointBackgroundColor: '#D97706',
-                    pointBorderColor: '#fff',
-                    pointHoverBackgroundColor: '#fff',
-                    pointHoverBorderColor: '#D97706'
-                }]
-            },
-            options: {
-                maintainAspectRatio: false,
-                scales: {
-                    r: {
-                        angleLines: { display: false },
-                        suggestedMin: 0,
-                        suggestedMax: 100,
-                        ticks: { display: false }, // Hide numbers for cleaner look
-                        pointLabels: {
-                            font: { size: 11, weight: 'bold' }
-                        }
-                    }
-                },
-                plugins: {
-                    tooltip: tooltipConfig,
-                    legend: { display: false },
-                    title: {
-                        display: true,
-                        text: 'Competency Matrix',
-                        font: { size: 16, family: "'Playfair Display', serif" }
-                    }
-                }
-            }
-        });
     </script>
 </body>
 </html>
