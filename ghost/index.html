@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Ghost Job Economy: Full Report</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-primary: #2185D0;
+            --color-primary-dark: #1671B0;
+            --color-accent: #FF6B6B;
+            --color-accent-light: #FFE5E5;
+            --color-success: #26A69A;
+            --color-warning: #F39C12;
+            --color-danger: #E74C3C;
+            --color-dark: #2C3E50;
+            --color-light: #ECF0F1;
+            --color-gray: #95A5A6;
+            --color-white: #FFFFFF;
+            --color-bg: #F8F9FA;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            line-height: 1.6;
+            color: var(--color-dark);
+            background-color: var(--color-bg);
+        }
+
+        /* Navigation */
+        nav {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            color: var(--color-white);
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--color-white);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--color-white);
+            text-decoration: none;
+            transition: opacity 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            color: var(--color-white);
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-stat {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 1.5rem 3rem;
+            border-radius: 10px;
+            margin: 0.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Section */
+        section {
+            padding: 4rem 0;
+            border-bottom: 1px solid #E8E8E8;
+        }
+
+        section:last-child {
+            border-bottom: none;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--color-primary);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--color-accent);
+            border-radius: 2px;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--color-dark);
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, var(--color-accent-light) 0%, rgba(255, 107, 107, 0.1) 100%);
+            border-left: 5px solid var(--color-accent);
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .highlight-box strong {
+            color: var(--color-accent);
+            font-size: 1.1rem;
+        }
+
+        /* Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .card {
+            background: var(--color-white);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .card h4 {
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .card-stat {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .card-label {
+            color: var(--color-gray);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Statistics Section */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-item {
+            background: var(--color-white);
+            padding: 2.5rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-text {
+            color: var(--color-gray);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            background: var(--color-white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .chart-container h3 {
+            margin-top: 0;
+        }
+
+        .chart-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        /* Industry Table */
+        .industry-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: var(--color-white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .industry-table thead {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            color: var(--color-white);
+        }
+
+        .industry-table th {
+            padding: 1.5rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .industry-table td {
+            padding: 1.5rem;
+            border-bottom: 1px solid #E8E8E8;
+        }
+
+        .industry-table tbody tr:hover {
+            background-color: #F8F9FA;
+        }
+
+        .ghost-rate {
+            font-weight: 700;
+            color: var(--color-danger);
+            font-size: 1.2rem;
+        }
+
+        .rate-low {
+            color: var(--color-success);
+        }
+
+        /* Impact Section */
+        .impact-list {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .impact-list li {
+            padding: 1rem 0;
+            padding-left: 3rem;
+            position: relative;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .impact-list li::before {
+            content: '⚠️';
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        /* Quote */
+        .quote {
+            border-left: 5px solid var(--color-primary);
+            padding: 2rem;
+            margin: 2rem 0;
+            background: #F8F9FA;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: var(--color-dark);
+            font-size: 1.1rem;
+        }
+
+        .quote-author {
+            margin-top: 1rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            font-style: normal;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--color-primary) 0%, var(--color-accent) 100%);
+        }
+
+        .timeline-item {
+            margin-bottom: 3rem;
+            margin-left: 100px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -70px;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            background: var(--color-primary);
+            border: 4px solid var(--color-bg);
+            border-radius: 50%;
+        }
+
+        .timeline-year {
+            font-weight: 700;
+            color: var(--color-primary);
+            font-size: 1.2rem;
+        }
+
+        .timeline-content {
+            background: var(--color-white);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            color: var(--color-white);
+            padding: 4rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .cta-section h2 {
+            color: var(--color-white);
+            margin-bottom: 1rem;
+        }
+
+        .cta-section h2::after {
+            background: var(--color-white);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--color-accent);
+            color: var(--color-white);
+        }
+
+        .btn-primary:hover {
+            background: #FF5252;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--color-white);
+            color: var(--color-primary);
+        }
+
+        .btn-secondary:hover {
+            background: #F8F9FA;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-dark);
+            color: var(--color-white);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--color-white);
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 15px;
+            }
+
+            .timeline-item {
+                margin-left: 60px;
+            }
+
+            .timeline-item::before {
+                left: -45px;
+            }
+
+            .btn-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* Accessibility */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="nav-brand">👻 Ghost Jobs Report</div>
+            <ul class="nav-links">
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#impact">Impact</a></li>
+                <li><a href="#sectors">Sectors</a></li>
+                <li><a href="#solutions">Solutions</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>The Ghost Job Economy</h1>
+        <p>Understanding the Crisis of Unfilled Positions in America's Labor Market</p>
+        <div>
+            <div class="hero-stat">30% of job postings never result in a hire</div>
+            <div class="hero-stat">2.2 Million unfilled positions</div>
+            <div class="hero-stat">60% gap in government sector</div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Overview Section -->
+        <section id="overview">
+            <h2>What Are Ghost Jobs?</h2>
+            <p>The emergence of the <strong>"Ghost Job Economy"</strong> represents one of the most significant yet underappreciated challenges confronting American workers and policymakers. Nearly <strong>one in three job postings—approximately 30% of all vacancies—never result in an actual hire</strong>. This phantom gap has held steady at 28-38% monthly since 2021, fundamentally distorting perceptions of labor market health.</p>
+
+            <div class="highlight-box">
+                <strong>📊 Key Finding:</strong> In June 2025, employers advertised 7.4 million positions but filled only 5.2 million, leaving over 2.2 million roles that existed entirely on paper.
+            </div>
+
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number">30%</div>
+                    <div class="stat-text">Job postings that never result in actual hires</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">2.2M</div>
+                    <div class="stat-text">Unfilled positions in the US job market</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">28-38%</div>
+                    <div class="stat-text">Monthly phantom gap since 2021</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">68%</div>
+                    <div class="stat-text">Job seekers reporting mental health impact</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Historical Timeline -->
+        <section>
+            <h2>Historical Evolution</h2>
+            <p>Understanding how we arrived at this crisis requires examining the dramatic shift in labor market dynamics since 2021.</p>
+
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-year">2010-2019: The Era of Alignment</div>
+                    <div class="timeline-content">
+                        <p>Job openings and hiring moved in tandem with remarkable consistency. Growth from 2M to 7M positions annually, with the gap between openings and hires rarely exceeding 10%. The labor market operated with relative transparency and efficiency.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-year">2020: Pandemic Disruption</div>
+                    <div class="timeline-content">
+                        <p>Both job openings and hiring collapsed simultaneously, maintaining the traditional ratio. While disruptive, the balanced decline initially preserved labor market equilibrium.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-year">2021-2022: The Breaking Point</div>
+                    <div class="timeline-content">
+                        <p>Job postings surged to above 11 million while hiring remained flat at 6-7 million. As many as 38% of all postings failed to result in hires. Employer behavior fundamentally changed in ways that would permanently alter the relationship between job advertisements and actual employment outcomes.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-year">2023-2025: The New Normal</div>
+                    <div class="timeline-content">
+                        <p>Even as economic conditions cooled, the "ghost job rate" remained stubbornly elevated at 28-32% monthly. This persistent gap suggests structural changes in how businesses approach recruitment, talent management, and workforce planning.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <h3>Job Openings vs. Actual Hires (2010-2025)</h3>
+                <img src="https://pplx-res.cloudinary.com/image/upload/v1765220110/search_images/7f370e68653b783f30786eb8642351ebbc311d10.jpg" alt="Chart showing divergence between job openings and hires starting in 2021" class="chart-image">
+            </div>
+        </section>
+
+        <!-- Sectoral Impact -->
+        <section id="sectors">
+            <h2>Sectoral Impact: The Unequal Crisis</h2>
+            <p>The problem of unfilled positions is not distributed uniformly across the American economy. Certain industries experience dramatically higher rates of ghost job postings.</p>
+
+            <table class="industry-table">
+                <thead>
+                    <tr>
+                        <th>Industry Sector</th>
+                        <th>Ghost Job Rate</th>
+                        <th>Primary Cause</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Government</strong></td>
+                        <td class="ghost-rate">60%</td>
+                        <td>Budget constraints, hiring freezes, complex procedures</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Education & Health</strong></td>
+                        <td class="ghost-rate">50%</td>
+                        <td>Documented shortages of qualified professionals</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Information (Tech)</strong></td>
+                        <td class="ghost-rate">48%</td>
+                        <td>Competition for rare AI/cybersecurity talent</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Financial Activities</strong></td>
+                        <td class="ghost-rate">44%</td>
+                        <td>Ongoing market cycle planning</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Retail</strong></td>
+                        <td class="ghost-rate">35%</td>
+                        <td>Seasonal fluctuations and turnover</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Manufacturing</strong></td>
+                        <td class="ghost-rate">28%</td>
+                        <td>Project-based hiring</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Construction</strong></td>
+                        <td class="ghost-rate rate-low">12%</td>
+                        <td>Clear hiring timelines align with job posting</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Hospitality</strong></td>
+                        <td class="ghost-rate rate-low">10%</td>
+                        <td>High-frequency hiring with clear timelines</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="chart-container">
+                <h3>Ghost Job Rates by Industry Sector</h3>
+                <img src="https://pplx-res.cloudinary.com/image/upload/v1765220110/search_images/8fa86032a7e66bd744b5e75d1c3fabcd1283e5bc.jpg" alt="Horizontal bar chart showing ghost job rates by industry" class="chart-image">
+            </div>
+        </section>
+
+        <!-- Why Ghost Jobs -->
+        <section>
+            <h2>Why Do Companies Post Ghost Jobs?</h2>
+            <p>Understanding the causes reveals that the phenomenon results from neither a single cause nor entirely intentional deception by employers.</p>
+
+            <div class="grid">
+                <div class="card">
+                    <h4>🎯 Building Talent Pools</h4>
+                    <p><strong>50% of HR professionals</strong> cite this reason. Companies view job posting as continuous recruitment activity, creating pools of pre-screened candidates for rapid deployment when business conditions improve.</p>
+                </div>
+
+                <div class="card">
+                    <h4>📅 Seasonal & Pipeline Planning</h4>
+                    <p><strong>48% of employers</strong> maintain postings for seasonal hiring needs and anticipated future growth, particularly in retail, hospitality, and education sectors.</p>
+                </div>
+
+                <div class="card">
+                    <h4>📊 Structural Labor Shortages</h4>
+                    <p><strong>35% of unfilled positions</strong> reflect genuine labor shortages. Healthcare, education, and tech sectors post real positions but cannot find qualified workers.</p>
+                </div>
+
+                <div class="card">
+                    <h4>⏸️ Administrative Delays</h4>
+                    <p>Budget freezes, internal approvals, and shifting strategic priorities can derail hiring even after positions have been posted.</p>
+                </div>
+
+                <div class="card">
+                    <h4>📈 Growth Signaling</h4>
+                    <p><strong>25% of companies</strong> post positions partly to convey an impression of growth and expansion to employees, investors, and competitors.</p>
+                </div>
+
+                <div class="card">
+                    <h4>🔍 Market Research</h4>
+                    <p>Some employers use job postings as market research to understand salary expectations, required skills, and competitive compensation practices without immediate hiring intent.</p>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <h3>Why Companies Post Ghost Jobs</h3>
+                <img src="https://pplx-res.cloudinary.com/image/upload/v1765220110/search_images/794d6a3c49476e798daf3cd5a55b317fe9b73ffd.jpg" alt="Pie chart showing reasons for ghost jobs" class="chart-image">
+            </div>
+        </section>
+
+        <!-- Impact Section -->
+        <section id="impact">
+            <h2>The Devastating Impact on Job Seekers</h2>
+            <p>The consequences of ghost jobs extend far beyond wasted time. For millions of American workers, encounters with ghost positions inflict significant psychological harm and economic losses.</p>
+
+            <h3>Mental Health Crisis</h3>
+            <ul class="impact-list">
+                <li><strong>72% of job seekers</strong> report that the employment process negatively impacts their mental health</li>
+                <li><strong>68% of job seekers</strong> report that ghosting and the job search process hurts their mental health</li>
+                <li>Some experience depression lasting weeks or months after being ghosted post-interview</li>
+                <li>Psychological impact particularly severe for underrepresented candidates (66% vs 59% for white candidates)</li>
+            </ul>
+
+            <div class="quote">
+                "I invested so much time and effort, and when I received no feedback, it left me in a state of distress. I began to question myself: What is wrong with me? Will I ever find work again?"
+                <div class="quote-author">— Anonymous Job Seeker</div>
+            </div>
+
+            <h3>The Ghosting Epidemic</h3>
+            <ul class="impact-list">
+                <li><strong>61% of job seekers</strong> report being ghosted after interviews (up 9% since early 2024)</li>
+                <li><strong>76% of recruiters</strong> have been ghosted by candidates</li>
+                <li><strong>44% of job seekers</strong> admit to ghosting employers</li>
+                <li><strong>34% of Gen Z workers</strong> have engaged in "career catfishing"—accepting positions only to vanish on their first day</li>
+            </ul>
+
+            <h3>Economic Costs</h3>
+            <ul class="impact-list">
+                <li>Average cost per hire: <strong>$4,700</strong></li>
+                <li>When candidates ghost after accepting: <strong>22% never show up</strong> for their first day</li>
+                <li>Time investment per ghosted application: <strong>47 hours</strong></li>
+                <li>Estimated annual economic loss: <strong>$2.5 billion</strong> in lost productivity</li>
+            </ul>
+        </section>
+
+        <!-- Policy & Solutions -->
+        <section id="solutions">
+            <h2>Policy Solutions & Future Directions</h2>
+            <p>Recognizing the severity of these issues, policymakers and industry leaders are proposing reforms to increase transparency and accountability in hiring.</p>
+
+            <div class="grid">
+                <div class="card">
+                    <h4>🏛️ Proposed Legislation</h4>
+                    <p><strong>Truth in Job Advertising & Accountability Act (TJAAA)</strong> would require employers to disclose hiring intent, provide salary bands, and remove filled positions within specified timeframes. Enforcement authority granted to Department of Labor and FTC.</p>
+                </div>
+
+                <div class="card">
+                    <h4>🗳️ State-Level Action</h4>
+                    <p><strong>New Jersey and California</strong> have introduced state-level legislation requiring that postings specify whether roles are actively open and mandating removal of filled positions within defined timeframes.</p>
+                </div>
+
+                <div class="card">
+                    <h4>🔍 Platform Transparency</h4>
+                    <p>Job platforms beginning implementation of detection systems to identify positions likely posted without genuine hiring intent, with automated removal of outdated postings.</p>
+                </div>
+
+                <div class="card">
+                    <h4>🤝 Employer Accountability</h4>
+                    <p>Industry standards emphasizing ethical recruitment practices, respectful candidate communication, and transparent hiring timelines to restore trust in labor markets.</p>
+                </div>
+            </div>
+
+            <div class="cta-section">
+                <h2>Taking Action Against Ghost Jobs</h2>
+                <p>This issue requires multifaceted approaches combining regulatory measures, platform accountability, cultural shifts, and structural investments in workforce development.</p>
+                <div class="btn-group">
+                    <a href="#" class="btn btn-primary">Learn More About Legislation</a>
+                    <a href="#" class="btn btn-secondary">Job Seeker Resources</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Takeaways -->
+        <section>
+            <h2>Key Takeaways</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-stat">30%</div>
+                    <div class="card-label">Ghost Job Rate</div>
+                    <p>Nearly one in three job postings never result in hiring</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-stat">68%</div>
+                    <div class="card-label">Mental Health Impact</div>
+                    <p>Job seekers reporting negative mental health effects</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-stat">$2.5B</div>
+                    <div class="card-label">Annual Economic Loss</div>
+                    <p>Lost productivity from ghost jobs and ghosting</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-stat">60%</div>
+                    <div class="card-label">Worst Sector</div>
+                    <p>Government positions with highest ghost rate</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conclusion -->
+        <section>
+            <h2>Conclusion</h2>
+            <p>The Ghost Job Economy represents one of the most significant yet underappreciated challenges confronting American workers and labor market functionality. The persistence of a 28-32% gap between job postings and actual hires since 2021 reveals a fundamental misalignment between what employers advertise and what they deliver.</p>
+
+            <p>While some unfilled positions reflect genuine labor shortages in specific sectors—a real problem requiring distinct solutions—other ghost jobs represent deliberate or negligent employer behavior that wastes millions of workers' time, damages mental health, and distorts the economic data upon which critical policy decisions depend.</p>
+
+            <p>The solution requires multifaceted approaches: regulatory measures ensuring transparency, platform accountability for outdated postings, cultural shifts prioritizing candidate respect, and structural investments in workforce development to address genuine labor shortages. Until job postings more accurately represent real opportunities, millions of Americans will continue investing time and emotional energy in chasing positions that exist only on paper.</p>
+
+            <p><strong>In an economy increasingly defined by anxiety and diminished trust, restoring integrity to the job search process represents not merely a matter of courtesy, but a fundamental requirement for healthy labor market function.</strong></p>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h3>The Ghost Job Economy Report</h3>
+            <p>Comprehensive analysis of unfilled positions and their impact on American workers and the labor market</p>
+            <div class="footer-links">
+                <a href="#overview">Overview</a>
+                <a href="#sectors">Sectors</a>
+                <a href="#impact">Impact</a>
+                <a href="#solutions">Solutions</a>
+                <a href="#">Contact</a>
+            </div>
+            <p style="margin-top: 2rem; opacity: 0.8; font-size: 0.9rem;">© 2025 Ghost Job Economy Report. Based on MyPerfectResume research and Bureau of Labor Statistics data.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Highlight navigation based on scroll position
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                const id = section.getAttribute('id');
+                const navLink = document.querySelector(`.nav-links a[href="#${id}"]`);
+
+                if (rect.top < 150 && rect.bottom > 150 && navLink) {
+                    navLinks.forEach(link => link.style.opacity = '0.7');
+                    navLink.style.opacity = '1';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
