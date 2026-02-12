@@ -3,510 +3,786 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Strategic Resolution Partner | Executive Briefing</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Law Firm M&A Economics | Corporate Transaction Leadership</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,700;1,400&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #F3F4F6; /* Gray-100 */
-            color: #111827; /* Gray-900 */
-            overflow-x: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #1a1a1a;
         }
 
-        h1, h2, h3, .serif {
-            font-family: 'Playfair Display', serif;
+        /* Navbar Styles */
+        .navbar-custom {
+            background: linear-gradient(90deg, #1e3c72 0%, #2a5298 100%);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
-        /* Chart Container Styling - Mandatory Constraint */
-        .chart-container {
+        .navbar-custom .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #fff !important;
+        }
+
+        .navbar-custom .nav-link {
+            color: rgba(255, 255, 255, 0.85) !important;
+            transition: all 0.3s ease;
+            margin: 0 0.5rem;
+        }
+
+        .navbar-custom .nav-link:hover {
+            color: #ffd700 !important;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #a8edea 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            background: linear-gradient(90deg, #ffd700 0%, #ffed4e 100%);
+            border: none;
+            color: #1e3c72;
+            padding: 14px 40px;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            color: #1e3c72;
+        }
+
+        /* Content Sections */
+        .section {
+            padding: 60px 20px;
+            background: white;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: #1e3c72;
+            text-align: center;
             position: relative;
-            width: 100%;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 350px;
-            max-height: 400px;
+            padding-bottom: 20px;
         }
 
-        @media (min-width: 768px) {
-            .chart-container {
-                height: 400px;
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #ffd700 0%, #ffed4e 100%);
+            border-radius: 2px;
+        }
+
+        /* Card Styles */
+        .card-custom {
+            background: white;
+            border: 2px solid #e8eef5;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .card-custom:hover {
+            border-color: #ffd700;
+            box-shadow: 0 8px 25px rgba(30, 60, 114, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .card-custom h3 {
+            color: #2a5298;
+            font-weight: 700;
+            margin-bottom: 15px;
+            font-size: 1.35rem;
+        }
+
+        .card-custom p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .icon-box {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+            color: #1e3c72;
+        }
+
+        /* Data Tables */
+        .data-table {
+            background: #f8f9fa;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .data-table table {
+            margin-bottom: 0;
+        }
+
+        .data-table thead {
+            background: linear-gradient(90deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+        }
+
+        .data-table th {
+            font-weight: 600;
+            border: none;
+            padding: 15px;
+        }
+
+        .data-table td {
+            border-color: #e8eef5;
+            padding: 12px 15px;
+            vertical-align: middle;
+        }
+
+        .data-table tbody tr:hover {
+            background-color: #e8f0f7;
+        }
+
+        .metric-badge {
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            color: #1e3c72;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        /* Partner Transition Flow */
+        .flow-diagram {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .flow-step {
+            flex: 1;
+            min-width: 150px;
+            text-align: center;
+            margin: 10px;
+            position: relative;
+        }
+
+        .flow-step-box {
+            background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .flow-arrow {
+            font-size: 2rem;
+            color: #ffd700;
+            margin: 0 10px;
+        }
+
+        /* Billable Hours Chart */
+        .chart-container {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+
+        .bar-item {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+        }
+
+        .bar-label {
+            width: 150px;
+            font-weight: 600;
+            color: #1e3c72;
+        }
+
+        .bar-fill {
+            flex: 1;
+            height: 30px;
+            background: linear-gradient(90deg, #2a5298 0%, #1e3c72 100%);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 15px;
+            color: white;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        .footer-custom {
+            background: linear-gradient(90deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer-custom p {
+            margin: 10px 0;
+        }
+
+        /* Pagination */
+        .page-indicator {
+            text-align: center;
+            padding: 20px;
+            font-weight: 600;
+            color: #1e3c72;
+            font-size: 0.95rem;
+        }
+
+        /* Two-page layout */
+        .page {
+            background: white;
+            margin-bottom: 40px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .flow-diagram {
+                flex-direction: column;
+            }
+
+            .flow-arrow {
+                transform: rotate(90deg);
+                margin: 10px 0;
             }
         }
 
-        /* Card Styling */
-        .glass-card {
-            background: white;
-            border-radius: 1rem;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        /* Highlight boxes */
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(42, 82, 152, 0.1) 100%);
+            border-left: 4px solid #ffd700;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 20px 0;
         }
 
-        .glass-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #059669; /* Emerald-600 */
-            border-radius: 4px;
+        .highlight-box strong {
+            color: #1e3c72;
         }
     </style>
-    <!-- Chosen Palette: "Executive Vibrance" -->
-    <!-- Primary: Emerald Green (#059669) - Represents Money/Growth/Resolution. -->
-    <!-- Secondary: Royal Blue (#1E3A8A) - Represents Trust/Corporate/Law. -->
-    <!-- Accent: Amber (#D97706) - Represents Opportunity/Bonus. -->
-    <!-- Background: Cool Gray (#F3F4F6). -->
-
-    <!-- Application Structure Plan:
-         1. Hero Section: High-impact introduction defining the "Legal Architect" persona.
-         2. The Strategic Pivot (Chart): Stacked Bar Chart comparing "Traditional Defense" vs. "Resolution Strategy" (Total Cost of Litigation).
-         3. The Compensation Structure (Chart): Bar Chart visualizing the $240k-$315k base + bonus potential.
-         4. The Firm Landscape (Stats): Grid of key firm attributes (AmLaw, Minority Owned, Coast-to-Coast).
-         5. Competency Profile (Chart): Radar Chart showing the mix of Negotiation, Risk Analysis, and Business Dev.
-         6. Workflow: A visual process flow of the "Settlement Counsel" methodology.
-         7. Requirements: Interactive checklist for Qualifications & Preferred Skills.
-    -->
-
-    <!-- Visualization & Content Choices:
-         1. Litigation Cost Model (Stacked Bar): Goal -> Compare. Justification -> Visualizes the core mandate: reducing "Total Cost" (Fees + Indemnity). Chart.js Stacked Bar is perfect for component comparison.
-         2. Compensation Range (Bar): Goal -> Inform. Justification -> Clearly shows the floor, ceiling, and "sky is the limit" bonus potential. Chart.js Bar.
-         3. Skill Radar (Radar): Goal -> Relationships. Justification -> Demonstrates that this role requires a balance of soft skills (negotiation) and hard skills (law), unlike a pure litigator. Chart.js Radar.
-         4. Workflow (HTML/CSS): Goal -> Change/Process. Justification -> Shows the linear progression of the role's function.
-    -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
 </head>
-<body class="antialiased">
-
-    <!-- HERO SECTION -->
-    <header class="bg-gradient-to-br from-blue-900 via-blue-800 to-emerald-900 text-white min-h-[60vh] flex flex-col justify-center relative overflow-hidden px-6 py-20">
-        <div class="absolute top-0 right-0 w-64 h-64 bg-emerald-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-        <div class="absolute bottom-0 left-0 w-64 h-64 bg-amber-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-        
-        <div class="max-w-7xl mx-auto w-full z-10 relative">
-            <div class="inline-block px-3 py-1 mb-4 text-xs font-bold tracking-wider uppercase bg-emerald-500 rounded-full text-white shadow-lg">
-                New Strategic Hub: Philadelphia, PA
-            </div>
-            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-                Senior Strategic <br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-amber-300 serif italic">Resolution Partner</span>
-            </h1>
-            <p class="text-xl md:text-2xl text-blue-100 max-w-2xl font-light leading-relaxed mb-10">
-                Move beyond the courtroom. Become the <strong>Legal Architect</strong> who defines fiscal stewardship for national insurers and Fortune 500s.
-            </p>
-            <div class="flex flex-wrap gap-4">
-                <a href="#mandate" class="px-8 py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-lg shadow-lg transition-all transform hover:scale-105">
-                    Explore the Mandate
-                </a>
-                <a href="#compensation" class="px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/30 font-bold rounded-lg transition-all">
-                    View Compensation
-                </a>
-            </div>
-        </div>
-    </header>
-
-    <!-- SECTION 1: THE STRATEGIC MANDATE (COST MODEL) -->
-    <section id="mandate" class="py-20 px-6 max-w-7xl mx-auto">
-        <div class="mb-12">
-            <h2 class="text-4xl font-bold text-gray-900 mb-4 serif">The Mandate: Fiscal Stewardship</h2>
-            <p class="text-lg text-gray-600 max-w-3xl leading-relaxed">
-                This is not a traditional trial role. Your objective is to inject predictability into the litigation lifecycle. By operating separately from trial teams, you will perform <strong>Early Case Assessment</strong> to reduce the total cost of litigation.
-            </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <!-- Visualization -->
-            <div class="glass-card p-6 border-t-4 border-emerald-500">
-                <div class="chart-container">
-                    <canvas id="costChart"></canvas>
-                </div>
-                <p class="text-sm text-center text-gray-500 mt-4 italic">
-                    The "Settlement Counsel" Model drastically reduces legal spend while controlling indemnity.
-                </p>
-            </div>
-
-            <!-- Context -->
-            <div class="space-y-8">
-                <div class="flex items-start">
-                    <div class="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-800 font-bold text-xl">1</div>
-                    <div class="ml-4">
-                        <h3 class="text-xl font-bold text-gray-900">Exposure Analysis</h3>
-                        <p class="text-gray-600 mt-2">
-                            Determine realistic settlement ranges and formulate defense budgets. Identify cases ripe for resolution before they incur unnecessary trial expenses.
-                        </p>
-                    </div>
-                </div>
-                <div class="flex items-start">
-                    <div class="flex-shrink-0 w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center text-amber-800 font-bold text-xl">2</div>
-                    <div class="ml-4">
-                        <h3 class="text-xl font-bold text-gray-900">Bulk Resolution</h3>
-                        <p class="text-gray-600 mt-2">
-                            Manage high-volume claims portfolios involving <strong>Mass Torts, Product Liability, and Employment</strong>. Use structured negotiation to resolve clusters.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 2: THE FIRM (STATISTICS) -->
-    <section class="py-20 bg-blue-900 text-white relative">
-        <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <h2 class="text-4xl font-bold mb-12 text-center serif">A National Powerhouse</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Stat Card 1 -->
-                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-white/20 text-center hover:bg-white/20 transition">
-                    <div class="text-5xl font-bold text-emerald-400 mb-2">Tier 1</div>
-                    <div class="text-sm uppercase tracking-wider font-semibold">Insurance Defense</div>
-                    <p class="text-xs text-blue-200 mt-2">Chambers-Recognized Leader</p>
-                </div>
-
-                <!-- Stat Card 2 -->
-                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-white/20 text-center hover:bg-white/20 transition">
-                    <div class="text-5xl font-bold text-amber-400 mb-2">#1</div>
-                    <div class="text-sm uppercase tracking-wider font-semibold">Minority & Women Owned</div>
-                    <p class="text-xs text-blue-200 mt-2">Largest in the U.S.</p>
-                </div>
-
-                <!-- Stat Card 3 -->
-                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-white/20 text-center hover:bg-white/20 transition">
-                    <div class="text-5xl font-bold text-emerald-400 mb-2">50+</div>
-                    <div class="text-sm uppercase tracking-wider font-semibold">Offices Nationally</div>
-                    <p class="text-xs text-blue-200 mt-2">Coast-to-Coast Footprint</p>
-                </div>
-
-                <!-- Stat Card 4 -->
-                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-white/20 text-center hover:bg-white/20 transition">
-                    <div class="text-5xl font-bold text-amber-400 mb-2">Hub</div>
-                    <div class="text-sm uppercase tracking-wider font-semibold">Philadelphia, PA</div>
-                    <p class="text-xs text-blue-200 mt-2">New Strategic Milestone</p>
-                </div>
-            </div>
-            
-            <p class="text-center mt-12 text-blue-200 max-w-3xl mx-auto">
-                "We are celebrated not only for our courtroom advocacy but for our innovative approach to legal service delivery. A culture that champions diversity, autonomy, and rapid career ascension."
-            </p>
-        </div>
-    </section>
-
-    <!-- SECTION 3: COMPENSATION (CHART) -->
-    <section id="compensation" class="py-20 px-6 max-w-7xl mx-auto">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <!-- Text Content -->
-            <div>
-                <h2 class="text-4xl font-bold text-gray-900 mb-6 serif">Lucrative Architecture</h2>
-                <p class="text-lg text-gray-600 mb-6">
-                    We reward strategic impact. The compensation package is designed for entrepreneurial attorneys with a vision for growth.
-                </p>
-                <ul class="space-y-4">
-                    <li class="flex items-center text-gray-700 font-semibold p-4 bg-white rounded-lg shadow-sm border-l-4 border-emerald-500">
-                        <span class="text-emerald-600 text-xl mr-3">&#10003;</span>
-                        Base Salary: $240,000 – $315,000
-                    </li>
-                    <li class="flex items-center text-gray-700 font-semibold p-4 bg-white rounded-lg shadow-sm border-l-4 border-amber-500">
-                        <span class="text-amber-600 text-xl mr-3">&#10003;</span>
-                        Performance & Origination Bonuses
-                    </li>
-                    <li class="flex items-center text-gray-700 font-semibold p-4 bg-white rounded-lg shadow-sm border-l-4 border-blue-500">
-                        <span class="text-blue-600 text-xl mr-3">&#10003;</span>
-                        $200k+ Portable Book Advantage
-                    </li>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><i class="fas fa-briefcase"></i> LegalEcon M&A</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#economics">Economics</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#billable">Billable Hours</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#portability">Partner Portability</a></li>
                 </ul>
             </div>
-
-            <!-- Chart -->
-            <div class="glass-card p-6">
-                <div class="chart-container">
-                    <canvas id="salaryChart"></canvas>
-                </div>
-            </div>
         </div>
-    </section>
+    </nav>
 
-    <!-- SECTION 4: COMPETENCY PROFILE (RADAR) -->
-    <section class="py-20 bg-gray-50 px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-12">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4 serif">The "Legal Architect" Profile</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">
-                    We are not looking for a standard litigator. We need a specialized resolution strategist.
-                </p>
-            </div>
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1><i class="fas fa-chart-line"></i> Law Firm M&A Economics</h1>
+        <p>Understanding Partner Economics, Billable Hours & Strategic Portability in Corporate Transactional M&A</p>
+        <button class="cta-button" onclick="document.getElementById('economics').scrollIntoView({behavior: 'smooth'})">
+            Explore Now <i class="fas fa-arrow-down"></i>
+        </button>
+    </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <div class="glass-card p-6 flex items-center justify-center">
-                    <div class="chart-container">
-                        <canvas id="skillsChart"></canvas>
+    <!-- PAGE 1: Economics & Billable Hours -->
+    <div class="page">
+        <div class="page-indicator">Page 1 of 2 | Law Firm Economics & Billing Metrics</div>
+
+        <div class="container my-5">
+            <!-- Section 1: Law Firm Economics -->
+            <section class="section" id="economics">
+                <h2 class="section-title"><i class="fas fa-coins"></i> Corporate M&A Law Firm Economics</h2>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card-custom">
+                            <div class="icon-box">
+                                <i class="fas fa-dollar-sign"></i>
+                            </div>
+                            <h3>The Economics Reality</h3>
+                            <p>Corporate transactional M&A law firms operate on three core economic pillars: <strong>utilization rates</strong> (billable hours captured), <strong>realization rates</strong> (hours billed vs. hours worked), and <strong>collection rates</strong> (revenue received vs. invoiced).</p>
+                            <p class="mt-3">For 2026, the average realization rate across law firms is <span class="metric-badge">88%</span>, meaning 12% of billable work never reaches the invoice.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card-custom">
+                            <div class="icon-box">
+                                <i class="fas fa-chart-pie"></i>
+                            </div>
+                            <h3>Partner Compensation Models</h3>
+                            <p>M&A partners operate under <strong>lockstep, hybrid, or portable book models</strong>:</p>
+                            <ul style="margin-top: 15px; color: #555;">
+                                <li><strong>Lockstep:</strong> Predictable, reduces partner mobility</li>
+                                <li><strong>Hybrid:</strong> Base + origination + realization metrics</li>
+                                <li><strong>Portable:</strong> Partners carry their economic value; attracts laterals</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
-                <div class="space-y-6">
-                    <div class="bg-white p-6 rounded-xl shadow-sm">
-                        <h3 class="text-lg font-bold text-blue-900 border-b pb-2 mb-3">Qualifications</h3>
-                        <ul class="space-y-2 text-sm text-gray-700">
-                            <li>&#8226; <strong>Juris Doctor (J.D.)</strong> from ABA-accredited Law School.</li>
-                            <li>&#8226; Active admission to <strong>Pennsylvania State Bar</strong>.</li>
-                            <li>&#8226; <strong>10+ years</strong> of litigation experience (Insurance/General Liability).</li>
-                            <li>&#8226; Proven history of independent, high-stakes negotiations.</li>
-                            <li>&#8226; Deep understanding of claims valuation & risk management.</li>
-                        </ul>
+                <div class="highlight-box">
+                    <strong><i class="fas fa-lightbulb"></i> Key Insight:</strong> Corporate M&A firms increasingly adopt hybrid models to compete for portable talent while maintaining firm economics discipline. 2026 M&A activity drives demand for senior partners with track records.
+                </div>
+            </section>
+
+            <!-- Section 2: Billable Hours Deep Dive -->
+            <section class="section" id="billable">
+                <h2 class="section-title"><i class="fas fa-clock"></i> Billable Hours & Realization Metrics</h2>
+
+                <p style="font-size: 1.05rem; color: #333; margin-bottom: 30px;">
+                    How partners view billable hours in M&A practice differs from traditional billing. Here's what the numbers show:
+                </p>
+
+                <!-- Metrics Table -->
+                <div class="data-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Metric</th>
+                                <th>2025 Average</th>
+                                <th>M&A Focus</th>
+                                <th>Impact</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Utilization Rate</strong></td>
+                                <td><span class="metric-badge">38%</span></td>
+                                <td>45-52% (M&A higher)</td>
+                                <td>M&A deals compress timelines, spike utilization</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Realization Rate</strong></td>
+                                <td><span class="metric-badge">88%</span></td>
+                                <td>92-95% (M&A highest)</td>
+                                <td>Fixed fees & AFAs shift risk to partners</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Collection Rate</strong></td>
+                                <td><span class="metric-badge">91%</span></td>
+                                <td>98%+ (Corporate clients solid)</td>
+                                <td>PE-backed targets may delay; disputes on scope</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Avg. Billable Hours/Day</strong></td>
+                                <td>2.6 hrs</td>
+                                <td>4-5 hrs (deal work)</td>
+                                <td>M&A deals generate heavier billing load</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Realization Components -->
+                <div class="row mt-5">
+                    <div class="col-md-4">
+                        <div class="card-custom text-center">
+                            <div style="font-size: 2.5rem; color: #ffd700; margin-bottom: 10px;">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <h4>Hours Worked</h4>
+                            <p style="margin-bottom: 0;">100%</p>
+                        </div>
                     </div>
+                    <div class="col-md-4">
+                        <div class="card-custom text-center">
+                            <div style="font-size: 2.5rem; color: #ffd700; margin-bottom: 10px;">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                            <h4>Hours Billed</h4>
+                            <p style="margin-bottom: 0;">88%</p>
+                            <small style="color: #999;">(-12% discounts/writeoffs)</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card-custom text-center">
+                            <div style="font-size: 2.5rem; color: #ffd700; margin-bottom: 10px;">
+                                <i class="fas fa-money-bill"></i>
+                            </div>
+                            <h4>Hours Collected</h4>
+                            <p style="margin-bottom: 0;">81%</p>
+                            <small style="color: #999;">Final revenue realized</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-container mt-5">
+                    <h4 style="color: #1e3c72; margin-bottom: 25px;">M&A Partner Revenue Path ($250/hr Standard Rate)</h4>
                     
-                    <div class="bg-emerald-50 p-6 rounded-xl shadow-sm border border-emerald-100">
-                        <h3 class="text-lg font-bold text-emerald-900 border-b border-emerald-200 pb-2 mb-3">Preferred "Plus" Skills</h3>
-                        <ul class="space-y-2 text-sm text-gray-700">
-                            <li>&#8226; <strong>Portable Book ($200k+)</strong> highly advantageous.</li>
-                            <li>&#8226; Admission to <strong>NJ or NY Bar</strong> for regional practice.</li>
-                            <li>&#8226; Certification in <strong>Mediation / ADR</strong>.</li>
-                            <li>&#8226; Experience with <strong>Class Action / Mass Tort</strong> clusters.</li>
-                        </ul>
+                    <div class="bar-item">
+                        <div class="bar-label">1,000 hrs Worked</div>
+                        <div class="bar-fill" style="width: 100%; background: linear-gradient(90deg, #1e3c72 0%, #2a5298 100%);">
+                            <span>$250,000</span>
+                        </div>
+                    </div>
+
+                    <div class="bar-item">
+                        <div class="bar-label">880 hrs Billed (88%)</div>
+                        <div class="bar-fill" style="width: 88%; background: linear-gradient(90deg, #2a5298 0%, #1e7fb8 100%);">
+                            <span>$220,000</span>
+                        </div>
+                    </div>
+
+                    <div class="bar-item">
+                        <div class="bar-label">804 hrs Collected (91%)</div>
+                        <div class="bar-fill" style="width: 80%; background: linear-gradient(90deg, #1e7fb8 0%, #00a8e8 100%);">
+                            <span>$201,000</span>
+                        </div>
                     </div>
                 </div>
-            </div>
+
+                <div class="highlight-box mt-4">
+                    <strong><i class="fas fa-warning"></i> Partner Perspective:</strong> A partner billing 1,000 hours at standard rates should see $250,000 in revenue. After realization leakage (12%) and collection gaps (9%), only $201,000 hits the firm. Partners obsess over <strong>closing the gap</strong> through fixed fees, AFAs, and direct billing for M&A work.
+                </div>
+            </section>
         </div>
-    </section>
 
-    <!-- SECTION 5: WORKFLOW PROCESS -->
-    <section class="py-20 px-6 max-w-7xl mx-auto">
-        <h2 class="text-4xl font-bold text-gray-900 mb-12 text-center serif">The Resolution Workflow</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <!-- Step 1 -->
-            <div class="p-8 bg-white rounded-xl shadow-lg border-t-8 border-blue-600 relative group hover:-translate-y-2 transition duration-300">
-                <div class="text-6xl mb-4">🔍</div>
-                <h3 class="text-xl font-bold mb-3">1. Assessment</h3>
-                <p class="text-gray-600 text-sm">
-                    Early case exposure analysis. Define the budget. Determine if the case is ripe for resolution.
+        <div class="page-indicator">Scroll for Page 2 ↓</div>
+    </div>
+
+    <!-- PAGE 2: Partner Portability & M&A Trends -->
+    <div class="page">
+        <div class="page-indicator">Page 2 of 2 | Partner Portability & Strategic M&A Transitions</div>
+
+        <div class="container my-5">
+            <!-- Section 3: Partner Portability -->
+            <section class="section" id="portability">
+                <h2 class="section-title"><i class="fas fa-exchange-alt"></i> Porting in a New Partner: Economics & Strategy</h2>
+
+                <p style="font-size: 1.05rem; color: #333; margin-bottom: 30px;">
+                    Corporate M&A firms increasingly recruit lateral partners with portable business. Here's how firms calculate the economic impact:
                 </p>
-            </div>
 
-            <!-- Arrow (Desktop only) -->
-            <div class="hidden md:flex items-center justify-center text-4xl text-gray-300 font-bold">
-                &#8594;
-            </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card-custom">
+                            <div class="icon-box">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <h3>Lateral Partner Analysis</h3>
+                            <p><strong>What firms evaluate:</strong></p>
+                            <ul style="margin-top: 15px; color: #555;">
+                                <li><strong>Portable Clients:</strong> $2-15M+ in annual fees</li>
+                                <li><strong>Realization History:</strong> Track record of 90%+ realization</li>
+                                <li><strong>Practice Depth:</strong> Industry specialization (PE, cross-border)</li>
+                                <li><strong>Team Portability:</strong> Associates & counsel coming along</li>
+                                <li><strong>Rainmaking Capacity:</strong> Origination vs. rainmaking credit split</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card-custom">
+                            <div class="icon-box">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <h3>Partner Porting Economics</h3>
+                            <p><strong>Typical 2026 Lateral Deal:</strong></p>
+                            <ul style="margin-top: 15px; color: #555;">
+                                <li>$4M annual portable book</li>
+                                <li>92% realization rate</li>
+                                <li>= $3.68M firm revenue impact</li>
+                                <li>Partner equity buy-in: $500K-1M</li>
+                                <li>Guaranteed comp: 80-90% of market rate Year 1</li>
+                                <li>Earnout: Years 2-3 based on retention</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
-            <!-- Step 2 -->
-            <div class="p-8 bg-white rounded-xl shadow-lg border-t-8 border-emerald-500 relative group hover:-translate-y-2 transition duration-300">
-                <div class="text-6xl mb-4">🤝</div>
-                <h3 class="text-xl font-bold mb-3">2. Strategy</h3>
-                <p class="text-gray-600 text-sm">
-                    Spearhead mediations and structured negotiations. "The Closer" steps in to manage multi-jurisdictional clusters.
-                </p>
-            </div>
-            
-             <!-- Arrow (Desktop only) -->
-            <div class="hidden md:flex items-center justify-center text-4xl text-gray-300 font-bold">
-                &#8594;
-            </div>
+                <div class="highlight-box">
+                    <strong><i class="fas fa-trending-up"></i> 2026 Market Reality:</strong> PE-backed firms and mid-market consolidators (Taft Stettinius, McDermott + Schulte) are aggressively hiring M&A partners. Partners with $5M+ portable books command premium economics: full economy (25-35% of profit), co-chair roles, and deferred carry arrangements.
+                </div>
 
-            <!-- Step 3 -->
-            <div class="p-8 bg-white rounded-xl shadow-lg border-t-8 border-amber-500 relative group hover:-translate-y-2 transition duration-300">
-                <div class="text-6xl mb-4">📉</div>
-                <h3 class="text-xl font-bold mb-3">3. Result</h3>
-                <p class="text-gray-600 text-sm">
-                    Reduction in Total Cost of Litigation (Fees + Indemnity). Predictable outcomes for institutional clients.
-                </p>
-            </div>
+                <!-- Partner Transition Flow -->
+                <h4 style="color: #1e3c72; margin-top: 40px; margin-bottom: 25px; font-weight: 700;">The Partner Integration Workflow</h4>
+                <div class="flow-diagram">
+                    <div class="flow-step">
+                        <div class="flow-step-box">
+                            <i class="fas fa-file-contract"></i><br>
+                            Due Diligence<br>
+                            (90 days)
+                        </div>
+                    </div>
+                    <div style="font-size: 1.5rem; color: #ffd700;">→</div>
+                    <div class="flow-step">
+                        <div class="flow-step-box">
+                            <i class="fas fa-users"></i><br>
+                            Client<br>
+                            Introductions
+                        </div>
+                    </div>
+                    <div style="font-size: 1.5rem; color: #ffd700;">→</div>
+                    <div class="flow-step">
+                        <div class="flow-step-box">
+                            <i class="fas fa-building"></i><br>
+                            Team<br>
+                            Transition
+                        </div>
+                    </div>
+                    <div style="font-size: 1.5rem; color: #ffd700;">→</div>
+                    <div class="flow-step">
+                        <div class="flow-step-box">
+                            <i class="fas fa-chart-line"></i><br>
+                            Revenue<br>
+                            Retention
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-md-4">
+                        <div class="card-custom">
+                            <h4 style="color: #2a5298; text-align: center;">60-Day Mark</h4>
+                            <p style="text-align: center; margin-top: 15px;">Partner embedded; client calls scheduled; market aware</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card-custom">
+                            <h4 style="color: #2a5298; text-align: center;">120-Day Mark</h4>
+                            <p style="text-align: center; margin-top: 15px;">60-70% client retention confirmed; new work pipeline active</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card-custom">
+                            <h4 style="color: #2a5298; text-align: center;">180-Day Mark</h4>
+                            <p style="text-align: center; margin-top: 15px;">Realization rates stabilize; integration complete; go/no-go for partnership track</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4: M&A Market Context 2026 -->
+            <section class="section">
+                <h2 class="section-title"><i class="fas fa-chart-bar"></i> Corporate M&A Market Drivers 2026</h2>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card-custom">
+                            <div class="icon-box">
+                                <i class="fas fa-arrow-up"></i>
+                            </div>
+                            <h3>Deal Activity Surge</h3>
+                            <p>U.S. corporate M&A deal value grew <strong>93% YoY</strong> for deals >$100M (late 2025). This creates sustained demand for M&A counsel through 2026 and beyond.</p>
+                            <p style="margin-top: 15px;"><strong>Impact on Partner Economics:</strong> High utilization, premium billing rates, and strong collections for quality shops.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card-custom">
+                            <div class="icon-box">
+                                <i class="fas fa-merge"></i>
+                            </div>
+                            <h3>Law Firm Consolidation</h3>
+                            <p>Major mergers (Hogan Lovells + Cadwalader, McDermott + Schulte, Taft expansions) signal structural consolidation. These create both <strong>lateral opportunities</strong> for portable partners and <strong>integration challenges</strong> for retained talent.</p>
+                            <p style="margin-top: 15px;"><strong>Partner Strategy:</strong> Clarity on post-merger economics before moving.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Key Metrics Summary -->
+                <div class="data-table mt-5">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Factor</th>
+                                <th>2025 Baseline</th>
+                                <th>2026 Outlook</th>
+                                <th>Partner Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Utilization (M&A)</strong></td>
+                                <td>45-50%</td>
+                                <td>50-58% (deal-driven)</td>
+                                <td>Invest in junior partners; hire associates</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Realization Pressure</strong></td>
+                                <td>88% avg</td>
+                                <td>90%+ (fixed fees)</td>
+                                <td>Shift to AFAs; manage scope creep</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Lateral Compensation</strong></td>
+                                <td>80-85% mkt</td>
+                                <td>100%+ mkt (hot market)</td>
+                                <td>Negotiate 3-year guarantee; equity vesting</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Partner Equity Value</strong></td>
+                                <td>1-2x revenue</td>
+                                <td>1.5-3x (consolidation premium)</td>
+                                <td>Lock in economics; negotiate carry</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="highlight-box mt-4">
+                    <strong><i class="fas fa-bullseye"></i> Strategic Takeaway:</strong> For M&A partners, 2026 is a <strong>sellers' market</strong>. Portable $3M+ books command premium economics in consolidated platforms. Partners should focus on: (1) documenting realization metrics, (2) securing client consent letters, (3) negotiating deferred carry (equity appreciation), and (4) maintaining junior talent optionality.
+                </div>
+            </section>
+
+            <!-- Section 5: Closing Thoughts -->
+            <section class="section">
+                <h2 class="section-title"><i class="fas fa-lightbulb"></i> The Partnership Playbook</h2>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="card-custom text-center">
+                            <div style="font-size: 2rem; color: #ffd700; margin-bottom: 15px;">
+                                <i class="fas fa-1"></i>
+                            </div>
+                            <h4>Know Your Numbers</h4>
+                            <p style="font-size: 0.9rem;">Realization, utilization, origination—master your P&L.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card-custom text-center">
+                            <div style="font-size: 2rem; color: #ffd700; margin-bottom: 15px;">
+                                <i class="fas fa-2"></i>
+                            </div>
+                            <h4>Build Portability</h4>
+                            <p style="font-size: 0.9rem;">Client relationships + team loyalty = optionality.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card-custom text-center">
+                            <div style="font-size: 2rem; color: #ffd700; margin-bottom: 15px;">
+                                <i class="fas fa-3"></i>
+                            </div>
+                            <h4>Align Incentives</h4>
+                            <p style="font-size: 0.9rem;">Hybrid comp models reward both stability & origination.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card-custom text-center">
+                            <div style="font-size: 2rem; color: #ffd700; margin-bottom: 15px;">
+                                <i class="fas fa-4"></i>
+                            </div>
+                            <h4>Time Market Moves</h4>
+                            <p style="font-size: 0.9rem;">Strong M&A markets = peak lateral leverage.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
-    </section>
 
-    <!-- FOOTER -->
-    <footer class="bg-gray-900 text-gray-400 py-12 px-6">
-        <div class="max-w-4xl mx-auto text-center space-y-6">
-            <h3 class="text-white text-2xl font-bold serif">Ready to Anchor the Strategy?</h3>
-            <p class="text-sm">
-                This is a job advertisement on behalf of our client and does not reflect the full job description. Any qualified candidates are encouraged to apply. You will need to provide law school transcripts, a writing sample or deal sheets, and a cover letter. This posting does not constitute an offer of employment.
-            </p>
-            <div class="pt-6 border-t border-gray-800">
-                <span class="text-xs uppercase tracking-widest">Job ID: Strategic Resolution Partner - Philadelphia</span>
-            </div>
+        <div class="footer-custom mt-5">
+            <p><strong>LegalEcon M&A Economics Framework</strong></p>
+            <p>Data sourced from: Clio Legal Trends 2025, ALM Intelligence, Thomson Reuters 2026 Legal Market Report, BCG Search, Freshfields M&A Predictions 2026</p>
+            <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.8;">© 2026 Corporate M&A Economics Guide | For Partner Development & Recruitment Strategy</p>
         </div>
-    </footer>
+    </div>
 
-    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // --- HELPER: Label Splitting Logic (Mandatory) ---
-        function splitLabel(str, maxLen = 16) {
-            if (str.length <= maxLen) return str;
-            const words = str.split(' ');
-            const lines = [];
-            let currentLine = words[0];
-
-            for (let i = 1; i < words.length; i++) {
-                if (currentLine.length + 1 + words[i].length <= maxLen) {
-                    currentLine += ' ' + words[i];
-                } else {
-                    lines.push(currentLine);
-                    currentLine = words[i];
+        // Smooth scroll enhancement
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
-            }
-            lines.push(currentLine);
-            return lines;
-        }
+            });
+        });
 
-        // --- HELPER: Tooltip Callback (Mandatory) ---
-        const tooltipConfig = {
-            callbacks: {
-                title: function(tooltipItems) {
-                    const item = tooltipItems[0];
-                    let label = item.chart.data.labels[item.dataIndex];
-                    if (Array.isArray(label)) {
-                        return label.join(' ');
-                    } else {
-                        return label;
-                    }
-                }
-            }
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
         };
 
-        // --- CHART 1: COST MODEL (Stacked Bar) ---
-        const ctxCost = document.getElementById('costChart').getContext('2d');
-        const labelsCost = ['Traditional Defense', 'Resolution Strategy'].map(l => splitLabel(l));
-        
-        new Chart(ctxCost, {
-            type: 'bar',
-            data: {
-                labels: labelsCost,
-                datasets: [
-                    {
-                        label: 'Legal Fees (Churn)',
-                        data: [65, 25], // Significant reduction
-                        backgroundColor: '#1E3A8A', // Blue
-                        barThickness: 50
-                    },
-                    {
-                        label: 'Indemnity Payout',
-                        data: [50, 45], // Slight reduction or controlled
-                        backgroundColor: '#D97706', // Amber
-                        barThickness: 50
-                    }
-                ]
-            },
-            options: {
-                maintainAspectRatio: false,
-                scales: {
-                    x: { stacked: true, grid: { display: false } },
-                    y: { 
-                        stacked: true, 
-                        display: false, // Abstract numbers
-                        grid: { display: false } 
-                    }
-                },
-                plugins: {
-                    tooltip: tooltipConfig,
-                    legend: { position: 'bottom' },
-                    title: {
-                        display: true,
-                        text: 'Total Cost of Litigation (Illustrative)',
-                        font: { size: 16, family: "'Playfair Display', serif" }
-                    }
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
                 }
-            }
-        });
+            });
+        }, observerOptions);
 
-        // --- CHART 2: COMPENSATION (Bar) ---
-        const ctxSalary = document.getElementById('salaryChart').getContext('2d');
-        const labelsSalary = ['Base Floor', 'Base Ceiling', 'With Book/Bonus'].map(l => splitLabel(l));
-
-        new Chart(ctxSalary, {
-            type: 'bar',
-            data: {
-                labels: labelsSalary,
-                datasets: [{
-                    label: 'Annual Compensation ($USD)',
-                    data: [240000, 315000, 420000], // 420k represents "Lucrative Bonuses" potential
-                    backgroundColor: [
-                        '#60A5FA', // Light Blue
-                        '#1E3A8A', // Dark Blue
-                        '#059669'  // Emerald (Bonus)
-                    ],
-                    borderRadius: 8
-                }]
-            },
-            options: {
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        ticks: {
-                            callback: function(value) { return '$' + value / 1000 + 'k'; }
-                        }
-                    },
-                    x: { grid: { display: false } }
-                },
-                plugins: {
-                    tooltip: tooltipConfig,
-                    legend: { display: false },
-                    title: {
-                        display: true,
-                        text: 'Compensation Potential',
-                        font: { size: 16, family: "'Playfair Display', serif" }
-                    }
-                }
-            }
-        });
-
-        // --- CHART 3: SKILLS PROFILE (Radar) ---
-        const ctxSkills = document.getElementById('skillsChart').getContext('2d');
-        const rawSkills = [
-            'Negotiation Strategy', 
-            'Risk Analysis', 
-            'Insurance Coverage', 
-            'Litigation Mgmt', 
-            'Business Development',
-            'Trial Advocacy'
-        ];
-        const labelsSkills = rawSkills.map(l => splitLabel(l, 14));
-
-        new Chart(ctxSkills, {
-            type: 'radar',
-            data: {
-                labels: labelsSkills,
-                datasets: [{
-                    label: 'Ideal Candidate Profile',
-                    data: [95, 90, 85, 80, 75, 40], // Low on "Trial Advocacy" because role operates separately
-                    fill: true,
-                    backgroundColor: 'rgba(5, 150, 105, 0.2)', // Emerald transparent
-                    borderColor: '#059669',
-                    pointBackgroundColor: '#D97706',
-                    pointBorderColor: '#fff',
-                    pointHoverBackgroundColor: '#fff',
-                    pointHoverBorderColor: '#D97706'
-                }]
-            },
-            options: {
-                maintainAspectRatio: false,
-                scales: {
-                    r: {
-                        angleLines: { display: false },
-                        suggestedMin: 0,
-                        suggestedMax: 100,
-                        ticks: { display: false }, // Hide numbers for cleaner look
-                        pointLabels: {
-                            font: { size: 11, weight: 'bold' }
-                        }
-                    }
-                },
-                plugins: {
-                    tooltip: tooltipConfig,
-                    legend: { display: false },
-                    title: {
-                        display: true,
-                        text: 'Competency Matrix',
-                        font: { size: 16, family: "'Playfair Display', serif" }
-                    }
-                }
-            }
+        document.querySelectorAll('.card-custom, .chart-container, .section').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
         });
     </script>
 </body>
