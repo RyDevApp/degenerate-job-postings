@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta description="A proven system for independently profitable attorneys to decide whether and where they should transition their practice"
+<meta keywords="Business Development, Dragon, Rainmaker, Billable Hours, Attorney Billing, legal billings, private law practice, business law, law firm money, Client-service, Partnerships, referrals, retainers, LPQ, realization rates, law business, solo attorney, solo practitioner, moneyball, the firm, biglaw, capital market, new york attorney, new jersey attorney, Philadelphia Attorney, Pennsylvania Lawyer, DC Attorney, Baltimore Attorney, Raleigh Corporate Attorney, Florida Attorney, Georgia Probate Attorney, Georgia Real Estate Attorney"> 
+<title>Attorney Partner Transition | APT</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --primary: #0e1117;
+  --accent: #c6a75e;
+  --light: #f5f5f5;
+  --muted: #8b8f98;
+  --max-width: 1100px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--primary);
+  color: var(--light);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: auto;
+  padding: 80px 20px;
+}
+
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+h1 {
+  font-size: 3.2rem;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+}
+
+h3 {
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  color: var(--accent);
+}
+
+p {
+  margin-bottom: 18px;
+  color: #d1d5db;
+}
+
+.section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: var(--muted);
+}
+
+.button {
+  display: inline-block;
+  padding: 14px 32px;
+  background: var(--accent);
+  color: #000;
+  text-decoration: none;
+  font-weight: 600;
+  margin-top: 30px;
+  transition: 0.3s ease;
+}
+
+.button:hover {
+  background: #e3c17c;
+  transform: translateY(-3px);
+}
+
+.grid {
+  display: grid;
+  gap: 40px;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.list {
+  margin-top: 15px;
+}
+
+.list li {
+  margin-bottom: 8px;
+  color: #cfd3da;
+}
+
+.highlight {
+  color: var(--accent);
+}
+
+.footer {
+  text-align: center;
+  padding: 40px 20px;
+  border-top: 1px solid #222;
+  color: var(--muted);
+}
+
+/* Modal */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal-content {
+  background: #11151c;
+  padding: 40px;
+  width: 90%;
+  max-width: 500px;
+  border: 1px solid #222;
+}
+
+.modal-content h2 {
+  margin-bottom: 20px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  background: #1c212b;
+  border: 1px solid #2c313c;
+  color: white;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.close-btn {
+  cursor: pointer;
+  color: var(--accent);
+  text-align: right;
+  margin-bottom: 15px;
+}
+
+/* Responsive */
+@media(max-width:768px){
+  h1 {
+    font-size: 2.2rem;
+  }
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div>
+    <h1>Attorney Partner Transition</h1>
+    <p>Built for Partners Who Think for Themselves</p>
+    <a href="#" class="button" id="openModal">Schedule a Private Consultation</a>
+  </div>
+</section>
+
+<section class="container section">
+  <h2>You Don’t Make Career Decisions Lightly</h2>
+  <p>You analyze. You calculate. You anticipate risk before others see it.</p>
+  <p>Your next move should reflect that.</p>
+</section>
+
+<section class="container section">
+  <h2>This Isn’t Recruiting.</h2>
+  <p class="highlight">It’s Strategic Positioning.</p>
+  <p>We dissect practice models. Analyze revenue architecture. Pressure-test portability assumptions. Evaluate firm economics beneath the branding.</p>
+</section>
+
+<section class="container section">
+  <h2>The Founder-Led Difference</h2>
+  <div class="grid grid-2">
+    <div>
+      <h3>What We Examine</h3>
+      <ul class="list">
+        <li>Real-world billing mechanics</li>
+        <li>Rate compression risk</li>
+        <li>Realization trends</li>
+        <li>Profit-per-partner data</li>
+        <li>Leadership durability</li>
+      </ul>
+    </div>
+    <div>
+      <h3>What It Means</h3>
+      <p>This is boutique advisory — not volume placement. You are never handed off. You work directly with strategic oversight.</p>
+    </div>
+  </div>
+</section>
+
+<section class="container section">
+  <h2>We Go Where Others Don’t</h2>
+  <p>Most recruiters stop at “Here’s a firm that’s hiring.”</p>
+  <p>We start with:</p>
+  <ul class="list">
+    <li>Collection cycles</li>
+    <li>Revenue concentration risk</li>
+    <li>Rate survivability</li>
+    <li>Origination credit protection</li>
+    <li>Post-year-one economics</li>
+  </ul>
+</section>
+
+<section class="container section">
+  <h2>The A.P.T. Framework</h2>
+  <div class="grid grid-2">
+    <div>
+      <h3>1. Diagnostic</h3>
+      <p>Billings. Collections. Realization. Leverage. Capital exposure.</p>
+
+      <h3>2. Market Intelligence</h3>
+      <p>Profit trends. Hiring velocity. Attrition patterns. Compensation durability.</p>
+    </div>
+    <div>
+      <h3>3. Alignment Strategy</h3>
+      <p>LPQ positioning. Compensation modeling. Origination protection.</p>
+
+      <h3>4. Controlled Execution</h3>
+      <p>No rushed introductions. No public missteps. Just calculated movement.</p>
+    </div>
+  </div>
+</section>
+
+<section class="container section">
+  <h2>Designed for Independent Operators</h2>
+  <p>Equity partners with portable business. Senior counsel building toward equity. Practice leaders evaluating platform upgrades.</p>
+  <p>If you’re looking for someone to analyze your move like a business transaction — we are.</p>
+  <a href="#" class="button" id="openModal2">Schedule a Private Consultation</a>
+</section>
+
+<footer class="footer">
+  <p>People Placers | Attorney Partner Transition</p>
+</footer>
+
+<!-- Modal -->
+<div class="modal" id="consultationModal">
+  <div class="modal-content">
+    <div class="close-btn" id="closeModal">Close ✕</div>
+    <h2>Private Consultation</h2>
+    <form id="consultForm">
+      <input type="text" placeholder="Full Name" required>
+      <input type="email" placeholder="Email Address" required>
+      <textarea rows="4" placeholder="Brief description of your practice"></textarea>
+      <button type="submit" class="button" style="width:100%;">Submit Request</button>
+    </form>
+  </div>
+</div>
+
+<script>
+// Scroll Animation
+const sections = document.querySelectorAll('.section');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.2 });
+
+sections.forEach(section => {
+  observer.observe(section);
+});
+
+// Modal Logic
+const modal = document.getElementById('consultationModal');
+const openBtns = [document.getElementById('openModal'), document.getElementById('openModal2')];
+const closeBtn = document.getElementById('closeModal');
+
+openBtns.forEach(btn => {
+  btn.addEventListener('click', e => {
+    e.preventDefault();
+    modal.classList.add('active');
+  });
+});
+
+closeBtn.addEventListener('click', () => {
+  modal.classList.remove('active');
+});
+
+window.addEventListener('click', e => {
+  if(e.target === modal){
+    modal.classList.remove('active');
+  }
+});
+
+// Form Submit
+document.getElementById('consultForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  alert("Your consultation request has been submitted confidentially.");
+  modal.classList.remove('active');
+  this.reset();
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Law Firm M&A Economics | Corporate Transaction Leadership</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #1a1a1a;
+        }
+
+        /* Navbar Styles */
+        .navbar-custom {
+            background: linear-gradient(90deg, #1e3c72 0%, #2a5298 100%);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-custom .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #fff !important;
+        }
+
+        .navbar-custom .nav-link {
+            color: rgba(255, 255, 255, 0.85) !important;
+            transition: all 0.3s ease;
+            margin: 0 0.5rem;
+        }
+
+        .navbar-custom .nav-link:hover {
+            color: #ffd700 !important;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #a8edea 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            background: linear-gradient(90deg, #ffd700 0%, #ffed4e 100%);
+            border: none;
+            color: #1e3c72;
+            padding: 14px 40px;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            color: #1e3c72;
+        }
+
+        /* Content Sections */
+        .section {
+            padding: 60px 20px;
+            background: white;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: #1e3c72;
+            text-align: center;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #ffd700 0%, #ffed4e 100%);
+            border-radius: 2px;
+        }
+
+        /* Card Styles */
+        .card-custom {
+            background: white;
+            border: 2px solid #e8eef5;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .card-custom:hover {
+            border-color: #ffd700;
+            box-shadow: 0 8px 25px rgba(30, 60, 114, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .card-custom h3 {
+            color: #2a5298;
+            font-weight: 700;
+            margin-bottom: 15px;
+            font-size: 1.35rem;
+        }
+
+        .card-custom p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .icon-box {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+            color: #1e3c72;
+        }
+
+        /* Data Tables */
+        .data-table {
+            background: #f8f9fa;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .data-table table {
+            margin-bottom: 0;
+        }
+
+        .data-table thead {
+            background: linear-gradient(90deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+        }
+
+        .data-table th {
+            font-weight: 600;
+            border: none;
+            padding: 15px;
+        }
+
+        .data-table td {
+            border-color: #e8eef5;
+            padding: 12px 15px;
+            vertical-align: middle;
+        }
+
+        .data-table tbody tr:hover {
+            background-color: #e8f0f7;
+        }
+
+        .metric-badge {
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            color: #1e3c72;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        /* Partner Transition Flow */
+        .flow-diagram {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .flow-step {
+            flex: 1;
+            min-width: 150px;
+            text-align: center;
+            margin: 10px;
+            position: relative;
+        }
+
+        .flow-step-box {
+            background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .flow-arrow {
+            font-size: 2rem;
+            color: #ffd700;
+            margin: 0 10px;
+        }
+
+        /* Billable Hours Chart */
+        .chart-container {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+
+        .bar-item {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+        }
+
+        .bar-label {
+            width: 150px;
+            font-weight: 600;
+            color: #1e3c72;
+        }
+
+        .bar-fill {
+            flex: 1;
+            height: 30px;
+            background: linear-gradient(90deg, #2a5298 0%, #1e3c72 100%);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 15px;
+            color: white;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        .footer-custom {
+            background: linear-gradient(90deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer-custom p {
+            margin: 10px 0;
+        }
+
+        /* Pagination */
+        .page-indicator {
+            text-align: center;
+            padding: 20px;
+            font-weight: 600;
+            color: #1e3c72;
+            font-size: 0.95rem;
+        }
+
+        /* Two-page layout */
+        .page {
+            background: white;
+            margin-bottom: 40px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .flow-diagram {
+                flex-direction: column;
+            }
+
+            .flow-arrow {
+                transform: rotate(90deg);
+                margin: 10px 0;
+            }
+        }
+
+        /* Highlight boxes */
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(42, 82, 152, 0.1) 100%);
+            border-left: 4px solid #ffd700;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+
+        .highlight-box strong {
+            color: #1e3c72;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><i class="fas fa-briefcase"></i> LegalEcon M&A</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#economics">Economics</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#billable">Billable Hours</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#portability">Partner Portability</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1><i class="fas fa-chart-line"></i> Law Firm M&A Economics</h1>
+        <p>Understanding Partner Economics, Billable Hours & Strategic Portability in Corporate Transactional M&A</p>
+        <button class="cta-button" onclick="document.getElementById('economics').scrollIntoView({behavior: 'smooth'})">
+            Explore Now <i class="fas fa-arrow-down"></i>
+        </button>
+    </div>
+
+    <!-- PAGE 1: Economics & Billable Hours -->
+    <div class="page">
+        <div class="page-indicator">Page 1 of 2 | Law Firm Economics & Billing Metrics</div>
+
+        <div class="container my-5">
+            <!-- Section 1: Law Firm Economics -->
+            <section class="section" id="economics">
+                <h2 class="section-title"><i class="fas fa-coins"></i> Corporate M&A Law Firm Economics</h2>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card-custom">
+                            <div class="icon-box">
+                                <i class="fas fa-dollar-sign"></i>
+                            </div>
+                            <h3>The Economics Reality</h3>
+                            <p>Corporate transactional M&A law firms operate on three core economic pillars: <strong>utilization rates</strong> (billable hours captured), <strong>realization rates</strong> (hours billed vs. hours worked), and <strong>collection rates</strong> (revenue received vs. invoiced).</p>
+                            <p class="mt-3">For 2026, the average realization rate across law firms is <span class="metric-badge">88%</span>, meaning 12% of billable work never reaches the invoice.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card-custom">
+                            <div class="icon-box">
+                                <i class="fas fa-chart-pie"></i>
+                            </div>
+                            <h3>Partner Compensation Models</h3>
+                            <p>M&A partners operate under <strong>lockstep, hybrid, or portable book models</strong>:</p>
+                            <ul style="margin-top: 15px; color: #555;">
+                                <li><strong>Lockstep:</strong> Predictable, reduces partner mobility</li>
+                                <li><strong>Hybrid:</strong> Base + origination + realization metrics</li>
+                                <li><strong>Portable:</strong> Partners carry their economic value; attracts laterals</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-lightbulb"></i> Key Insight:</strong> Corporate M&A firms increasingly adopt hybrid models to compete for portable talent while maintaining firm economics discipline. 2026 M&A activity drives demand for senior partners with track records.
+                </div>
+            </section>
+
+            <!-- Section 2: Billable Hours Deep Dive -->
+            <section class="section" id="billable">
+                <h2 class="section-title"><i class="fas fa-clock"></i> Billable Hours & Realization Metrics</h2>
+
+                <p style="font-size: 1.05rem; color: #333; margin-bottom: 30px;">
+                    How partners view billable hours in M&A practice differs from traditional billing. Here's what the numbers show:
+                </p>
+
+                <!-- Metrics Table -->
+                <div class="data-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Metric</th>
+                                <th>2025 Average</th>
+                                <th>M&A Focus</th>
+                                <th>Impact</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Utilization Rate</strong></td>
+                                <td><span class="metric-badge">38%</span></td>
+                                <td>45-52% (M&A higher)</td>
+                                <td>M&A deals compress timelines, spike utilization</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Realization Rate</strong></td>
+                                <td><span class="metric-badge">88%</span></td>
+                                <td>92-95% (M&A highest)</td>
+                                <td>Fixed fees & AFAs shift risk to partners</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Collection Rate</strong></td>
+                                <td><span class="metric-badge">91%</span></td>
+                                <td>98%+ (Corporate clients solid)</td>
+                                <td>PE-backed targets may delay; disputes on scope</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Avg. Billable Hours/Day</strong></td>
+                                <td>2.6 hrs</td>
+                                <td>4-5 hrs (deal work)</td>
+                                <td>M&A deals generate heavier billing load</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Realization Components -->
+                <div class="row mt-5">
+                    <div class="col-md-4">
+                        <div class="card-custom text-center">
+                            <div style="font-size: 2.5rem; color: #ffd700; margin-bottom: 10px;">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <h4>Hours Worked</h4>
+                            <p style="margin-bottom: 0;">100%</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card-custom text-center">
+                            <div style="font-size: 2.5rem; color: #ffd700; margin-bottom: 10px;">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                            <h4>Hours Billed</h4>
+                            <p style="margin-bottom: 0;">88%</p>
+                            <small style="color: #999;">(-12% discounts/writeoffs)</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card-custom text-center">
+                            <div style="font-size: 2.5rem; color: #ffd700; margin-bottom: 10px;">
+                                <i class="fas fa-money-bill"></i>
+                            </div>
+                            <h4>Hours Collected</h4>
+                            <p style="margin-bottom: 0;">81%</p>
+                            <small style="color: #999;">Final revenue realized</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-container mt-5">
+                    <h4 style="color: #1e3c72; margin-bottom: 25px;">M&A Partner Revenue Path ($250/hr Standard Rate)</h4>
+                    
+                    <div class="bar-item">
+                        <div class="bar-label">1,000 hrs Worked</div>
+                        <div class="bar-fill" style="width: 100%; background: linear-gradient(90deg, #1e3c72 0%, #2a5298 100%);">
+                            <span>$250,000</span>
+                        </div>
+                    </div>
+
+                    <div class="bar-item">
+                        <div class="bar-label">880 hrs Billed (88%)</div>
+                        <div class="bar-fill" style="width: 88%; background: linear-gradient(90deg, #2a5298 0%, #1e7fb8 100%);">
+                            <span>$220,000</span>
+                        </div>
+                    </div>
+
+                    <div class="bar-item">
+                        <div class="bar-label">804 hrs Collected (91%)</div>
+                        <div class="bar-fill" style="width: 80%; background: linear-gradient(90deg, #1e7fb8 0%, #00a8e8 100%);">
+                            <span>$201,000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="highlight-box mt-4">
+                    <strong><i class="fas fa-warning"></i> Partner Perspective:</strong> A partner billing 1,000 hours at standard rates should see $250,000 in revenue. After realization leakage (12%) and collection gaps (9%), only $201,000 hits the firm. Partners obsess over <strong>closing the gap</strong> through fixed fees, AFAs, and direct billing for M&A work.
+                </div>
+            </section>
+        </div>
+
+        <div class="page-indicator">Scroll for Page 2 ↓</div>
+    </div>
+
+    <!-- PAGE 2: Partner Portability & M&A Trends -->
+    <div class="page">
+        <div class="page-indicator">Page 2 of 2 | Partner Portability & Strategic M&A Transitions</div>
+
+        <div class="container my-5">
+            <!-- Section 3: Partner Portability -->
+            <section class="section" id="portability">
+                <h2 class="section-title"><i class="fas fa-exchange-alt"></i> Porting in a New Partner: Economics & Strategy</h2>
+
+                <p style="font-size: 1.05rem; color: #333; margin-bottom: 30px;">
+                    Corporate M&A firms increasingly recruit lateral partners with portable business. Here's how firms calculate the economic impact:
+                </p>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card-custom">
+                            <div class="icon-box">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <h3>Lateral Partner Analysis</h3>
+                            <p><strong>What firms evaluate:</strong></p>
+                            <ul style="margin-top: 15px; color: #555;">
+                                <li><strong>Portable Clients:</strong> $2-15M+ in annual fees</li>
+                                <li><strong>Realization History:</strong> Track record of 90%+ realization</li>
+                                <li><strong>Practice Depth:</strong> Industry specialization (PE, cross-border)</li>
+                                <li><strong>Team Portability:</strong> Associates & counsel coming along</li>
+                                <li><strong>Rainmaking Capacity:</strong> Origination vs. rainmaking credit split</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card-custom">
+                            <div class="icon-box">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <h3>Partner Porting Economics</h3>
+                            <p><strong>Typical 2026 Lateral Deal:</strong></p>
+                            <ul style="margin-top: 15px; color: #555;">
+                                <li>$4M annual portable book</li>
+                                <li>92% realization rate</li>
+                                <li>= $3.68M firm revenue impact</li>
+                                <li>Partner equity buy-in: $500K-1M</li>
+                                <li>Guaranteed comp: 80-90% of market rate Year 1</li>
+                                <li>Earnout: Years 2-3 based on retention</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-trending-up"></i> 2026 Market Reality:</strong> PE-backed firms and mid-market consolidators (Taft Stettinius, McDermott + Schulte) are aggressively hiring M&A partners. Partners with $5M+ portable books command premium economics: full economy (25-35% of profit), co-chair roles, and deferred carry arrangements.
+                </div>
+
+                <!-- Partner Transition Flow -->
+                <h4 style="color: #1e3c72; margin-top: 40px; margin-bottom: 25px; font-weight: 700;">The Partner Integration Workflow</h4>
+                <div class="flow-diagram">
+                    <div class="flow-step">
+                        <div class="flow-step-box">
+                            <i class="fas fa-file-contract"></i><br>
+                            Due Diligence<br>
+                            (90 days)
+                        </div>
+                    </div>
+                    <div style="font-size: 1.5rem; color: #ffd700;">→</div>
+                    <div class="flow-step">
+                        <div class="flow-step-box">
+                            <i class="fas fa-users"></i><br>
+                            Client<br>
+                            Introductions
+                        </div>
+                    </div>
+                    <div style="font-size: 1.5rem; color: #ffd700;">→</div>
+                    <div class="flow-step">
+                        <div class="flow-step-box">
+                            <i class="fas fa-building"></i><br>
+                            Team<br>
+                            Transition
+                        </div>
+                    </div>
+                    <div style="font-size: 1.5rem; color: #ffd700;">→</div>
+                    <div class="flow-step">
+                        <div class="flow-step-box">
+                            <i class="fas fa-chart-line"></i><br>
+                            Revenue<br>
+                            Retention
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-md-4">
+                        <div class="card-custom">
+                            <h4 style="color: #2a5298; text-align: center;">60-Day Mark</h4>
+                            <p style="text-align: center; margin-top: 15px;">Partner embedded; client calls scheduled; market aware</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card-custom">
+                            <h4 style="color: #2a5298; text-align: center;">120-Day Mark</h4>
+                            <p style="text-align: center; margin-top: 15px;">60-70% client retention confirmed; new work pipeline active</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card-custom">
+                            <h4 style="color: #2a5298; text-align: center;">180-Day Mark</h4>
+                            <p style="text-align: center; margin-top: 15px;">Realization rates stabilize; integration complete; go/no-go for partnership track</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4: M&A Market Context 2026 -->
+            <section class="section">
+                <h2 class="section-title"><i class="fas fa-chart-bar"></i> Corporate M&A Market Drivers 2026</h2>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card-custom">
+                            <div class="icon-box">
+                                <i class="fas fa-arrow-up"></i>
+                            </div>
+                            <h3>Deal Activity Surge</h3>
+                            <p>U.S. corporate M&A deal value grew <strong>93% YoY</strong> for deals >$100M (late 2025). This creates sustained demand for M&A counsel through 2026 and beyond.</p>
+                            <p style="margin-top: 15px;"><strong>Impact on Partner Economics:</strong> High utilization, premium billing rates, and strong collections for quality shops.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card-custom">
+                            <div class="icon-box">
+                                <i class="fas fa-merge"></i>
+                            </div>
+                            <h3>Law Firm Consolidation</h3>
+                            <p>Major mergers (Hogan Lovells + Cadwalader, McDermott + Schulte, Taft expansions) signal structural consolidation. These create both <strong>lateral opportunities</strong> for portable partners and <strong>integration challenges</strong> for retained talent.</p>
+                            <p style="margin-top: 15px;"><strong>Partner Strategy:</strong> Clarity on post-merger economics before moving.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Key Metrics Summary -->
+                <div class="data-table mt-5">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Factor</th>
+                                <th>2025 Baseline</th>
+                                <th>2026 Outlook</th>
+                                <th>Partner Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Utilization (M&A)</strong></td>
+                                <td>45-50%</td>
+                                <td>50-58% (deal-driven)</td>
+                                <td>Invest in junior partners; hire associates</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Realization Pressure</strong></td>
+                                <td>88% avg</td>
+                                <td>90%+ (fixed fees)</td>
+                                <td>Shift to AFAs; manage scope creep</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Lateral Compensation</strong></td>
+                                <td>80-85% mkt</td>
+                                <td>100%+ mkt (hot market)</td>
+                                <td>Negotiate 3-year guarantee; equity vesting</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Partner Equity Value</strong></td>
+                                <td>1-2x revenue</td>
+                                <td>1.5-3x (consolidation premium)</td>
+                                <td>Lock in economics; negotiate carry</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="highlight-box mt-4">
+                    <strong><i class="fas fa-bullseye"></i> Strategic Takeaway:</strong> For M&A partners, 2026 is a <strong>sellers' market</strong>. Portable $3M+ books command premium economics in consolidated platforms. Partners should focus on: (1) documenting realization metrics, (2) securing client consent letters, (3) negotiating deferred carry (equity appreciation), and (4) maintaining junior talent optionality.
+                </div>
+            </section>
+
+            <!-- Section 5: Closing Thoughts -->
+            <section class="section">
+                <h2 class="section-title"><i class="fas fa-lightbulb"></i> The Partnership Playbook</h2>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="card-custom text-center">
+                            <div style="font-size: 2rem; color: #ffd700; margin-bottom: 15px;">
+                                <i class="fas fa-1"></i>
+                            </div>
+                            <h4>Know Your Numbers</h4>
+                            <p style="font-size: 0.9rem;">Realization, utilization, origination—master your P&L.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card-custom text-center">
+                            <div style="font-size: 2rem; color: #ffd700; margin-bottom: 15px;">
+                                <i class="fas fa-2"></i>
+                            </div>
+                            <h4>Build Portability</h4>
+                            <p style="font-size: 0.9rem;">Client relationships + team loyalty = optionality.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card-custom text-center">
+                            <div style="font-size: 2rem; color: #ffd700; margin-bottom: 15px;">
+                                <i class="fas fa-3"></i>
+                            </div>
+                            <h4>Align Incentives</h4>
+                            <p style="font-size: 0.9rem;">Hybrid comp models reward both stability & origination.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card-custom text-center">
+                            <div style="font-size: 2rem; color: #ffd700; margin-bottom: 15px;">
+                                <i class="fas fa-4"></i>
+                            </div>
+                            <h4>Time Market Moves</h4>
+                            <p style="font-size: 0.9rem;">Strong M&A markets = peak lateral leverage.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="footer-custom mt-5">
+            <p><strong>LegalEcon M&A Economics Framework</strong></p>
+            <p>Data sourced from: Clio Legal Trends 2025, ALM Intelligence, Thomson Reuters 2026 Legal Market Report, BCG Search, Freshfields M&A Predictions 2026</p>
+            <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.8;">© 2026 Corporate M&A Economics Guide | For Partner Development & Recruitment Strategy</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scroll enhancement
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card-custom, .chart-container, .section').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
